@@ -12,7 +12,7 @@ from rememberApp.models import AboutPage, Services, CalculateCost, Feedback, Gra
 def home(request):
     graveyard = Graveyard.objects.all()
     info_about = AboutPage.objects.first()
-    approved_feedback = CalculateCost.objects.filter(approved=True).order_by('-date')
+    approved_feedback = Feedback.objects.filter(approved=True).order_by('-date')
     if request.LANGUAGE_CODE == 'en':
         list_services = Services.objects.filter(english=True).order_by('-pk')
     elif request.LANGUAGE_CODE == 'ru':
