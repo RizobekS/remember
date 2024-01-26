@@ -1,0 +1,228 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-01-24 18:22+0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: .\rememberApp\models.py:16 .\rememberApp\models.py:17
+msgid "About Us"
+msgstr "Biz haqimizda"
+
+#: .\rememberApp\models.py:41
+msgid "Service"
+msgstr "Xiznat"
+
+#: .\rememberApp\models.py:42
+msgid "Services"
+msgstr "Xizmatlar"
+
+#: .\rememberApp\models.py:88
+msgid "Graveyard"
+msgstr "Qabriston"
+
+#: .\rememberApp\models.py:89
+msgid "Graveyards"
+msgstr "Qabristonlar"
+
+#: .\rememberApp\models.py:108
+msgid "Calculate cost"
+msgstr "Narxni xisoblash"
+
+#: .\rememberApp\models.py:109
+msgid "Calculate costs"
+msgstr "Narxlarni xisoblash"
+
+#: .\rememberApp\models.py:139
+msgid "Feedback"
+msgstr "Sharh"
+
+#: .\rememberApp\models.py:140
+msgid "Feedbacks"
+msgstr "Sharhlar"
+
+#: .\rememberApp\models.py:170
+msgid "Contact"
+msgstr "Aloqa"
+
+#: .\rememberApp\models.py:171
+msgid "Contacts"
+msgstr "Aloqalar"
+
+#: .\rememberApp\templates\about_us.html:5
+#: .\rememberApp\templates\about_us.html:13
+#: .\rememberApp\templates\components\_footer.html:55
+#: .\rememberApp\templates\components\base.html:67
+#: .\rememberApp\templates\home.html:46
+msgid "О нас"
+msgstr "Biz haqimizda"
+
+#: .\rememberApp\templates\components\_footer.html:50
+msgid "Ссылки"
+msgstr "Havolalar"
+
+#: .\rememberApp\templates\components\_footer.html:58
+#: .\rememberApp\templates\components\base.html:68
+#: .\rememberApp\templates\home.html:143 .\rememberApp\templates\home.html:298
+#: .\rememberApp\templates\home.html:300 .\rememberApp\templates\home.html:302
+#: .\rememberApp\templates\services.html:5
+#: .\rememberApp\templates\services.html:13
+msgid "Услуги"
+msgstr "Xizmatlar"
+
+#: .\rememberApp\templates\components\_footer.html:61
+#: .\rememberApp\templates\components\base.html:69
+msgid "Кладбища"
+msgstr "Qabristonlar"
+
+#: .\rememberApp\templates\components\_footer.html:64
+#: .\rememberApp\templates\components\base.html:70
+msgid "Галерея"
+msgstr "Galereya"
+
+#: .\rememberApp\templates\components\_footer.html:67
+#: .\rememberApp\templates\components\base.html:71
+#: .\rememberApp\templates\feedback.html:4
+#: .\rememberApp\templates\feedback.html:11
+#: .\rememberApp\templates\home.html:288
+msgid "Отзывы"
+msgstr "Sharhlar"
+
+#: .\rememberApp\templates\components\_footer.html:70
+#: .\rememberApp\templates\components\_footer.html:81
+#: .\rememberApp\templates\components\base.html:72
+#: .\rememberApp\templates\contact.html:4
+#: .\rememberApp\templates\contact.html:22
+msgid "Контакты"
+msgstr "Aloqalar"
+
+#: .\rememberApp\templates\components\_footer.html:86
+#: .\rememberApp\templates\contact.html:67
+msgid "улица Бобура 77, Ташкент, Узбекситан"
+msgstr "Bobur ko'chasi 77, Toshkent, O'zbekiston"
+
+#: .\rememberApp\templates\components\_footer.html:95
+msgid "При использовании информации сайта ссылка на источник обязательна"
+msgstr "Saytdagi ma'lumotlardan foydalanilganda manba ko`rsatilishi shart"
+
+#: .\rememberApp\templates\components\base.html:12
+#: .\rememberApp\templates\components\base.html:14
+#: .\rememberApp\templates\components\base.html:16
+msgid "Помни меня"
+msgstr "Remember Me"
+
+#: .\rememberApp\templates\contact.html:36
+#: .\rememberApp\templates\feedback.html:29
+#: .\rememberApp\templates\home.html:189
+msgid "большое спасибо за ваше сообщение! Мы свяжемся с Вами в скором времени!"
+msgstr "xabaringiz uchun rahmat! Tez orada siz bilan bog'lanamiz!"
+
+#: .\rememberApp\templates\contact.html:42
+#: .\rememberApp\templates\feedback.html:35
+#: .\rememberApp\templates\home.html:196
+msgid "Упс, что-то пошло не так!"
+msgstr "Xatolik yuz berdi"
+
+#: .\rememberApp\templates\contact.html:66
+msgid "Адрес"
+msgstr "Manzil"
+
+#: .\rememberApp\templates\contact.html:69
+#: .\rememberApp\templates\contact.html:97
+#: .\rememberApp\templates\feedback.html:67
+#: .\rememberApp\templates\home.html:232
+msgid "Телефон"
+msgstr "Telefon"
+
+#: .\rememberApp\templates\contact.html:73
+msgid "Адрес электронной почты"
+msgstr "Elektron pochta manzili"
+
+#: .\rememberApp\templates\contact.html:83
+msgid "Связаться"
+msgstr "Biz Bilan Bog'lanish"
+
+#: .\rememberApp\templates\contact.html:91
+#: .\rememberApp\templates\feedback.html:52
+#: .\rememberApp\templates\home.html:215
+msgid "Имя"
+msgstr "Ism"
+
+#: .\rememberApp\templates\contact.html:103
+msgid "Ваша электронная почта"
+msgstr "Elektron pochta manzilingiz"
+
+#: .\rememberApp\templates\contact.html:110
+#: .\rememberApp\templates\feedback.html:95
+#: .\rememberApp\templates\home.html:262
+msgid "Сообщение"
+msgstr "Xabar"
+
+#: .\rememberApp\templates\contact.html:115
+#: .\rememberApp\templates\feedback.html:104
+#: .\rememberApp\templates\home.html:272
+msgid "Отправить"
+msgstr "Yuborish"
+
+#: .\rememberApp\templates\feedback.html:59
+#: .\rememberApp\templates\home.html:223
+msgid "Почта"
+msgstr "Elektron pochta"
+
+#: .\rememberApp\templates\feedback.html:75
+#: .\rememberApp\templates\home.html:241
+msgid "Выбрать услугу"
+msgstr "Xizmatni tanlang"
+
+#: .\rememberApp\templates\feedback.html:100
+#: .\rememberApp\templates\home.html:268
+msgid "Соглашаюсь на публичную оферту"
+msgstr "Men ommaviy taklifga roziman"
+
+#: .\rememberApp\templates\home.html:15
+msgid "Уборка могил на кладбищах в Узбекистане"
+msgstr "O'zbekistondagi qabristonlarda qabrlarni tozalash"
+
+#: .\rememberApp\templates\home.html:17
+msgid ""
+"Чистая и опрятная могила радует глаз и дарит душевное спокойствие и "
+"внутренний комфорт"
+msgstr "Toza va ozoda qabr ko'zni quvontiradi, qalbga tinchlik va ichki qulaylik beradi"
+
+#: .\rememberApp\templates\home.html:19
+msgid "Расчёт стоимости"
+msgstr "Xarajatlarni hisoblash"
+
+#: .\rememberApp\templates\home.html:60 .\rememberApp\templates\home.html:164
+#: .\rememberApp\templates\services.html:41
+msgid "Подробнее"
+msgstr "Batafsil"
+
+#: .\rememberApp\templates\home.html:73
+msgid "Поиск кладбищ по всему Узбекистану"
+msgstr "Butun O'zbekiston bo'ylab qabristonlarni qidirish"
+
+#: .\rememberApp\templates\home.html:76
+msgid "Список и дополнительные сведения"
+msgstr "Ro'yxat va qo'shimcha ma'lumotlar"
+
+#: .\rememberApp\views.py:33 .\rememberApp\views.py:118
+msgid "Ooops something went wrong!"
+msgstr "Nimadir xato ketdi!"
+
+#: .\rememberApp\views.py:94
+msgid "Ooops, something went wrong!"
+msgstr "Nimadir xato ketdi!"

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+{% load static %}
+{% load i18n %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Title -->
+    <title>{% spaceless %}{% block title %} {% translate "Помни меня" %} {% endblock title %}{% endspaceless %}</title>
+    <meta property="og:title"
+          content='{% spaceless %}{% block og_title %}{% trans "Помни меня" %}{% endblock og_title %}{% endspaceless %}'/>
+    <meta property="og:description"
+          content='{% spaceless %}{% block description %}{% trans  "Помни меня" %}{% endblock description %}{% endspaceless %}'/>
+    <meta property="og:image"
+          content="https://{% spaceless %}{% block image %}remember.uz{% static '/rememberApp/core-img/logo.ico' %}{% endblock image %}{% endspaceless %}">
+    <meta property="og:type" content="website"/>
+
+    <!-- Google Search Engine -->
+    <link rel="alternate" hreflang="en" href="https://remember.uz/en"/>
+    <link rel="alternate" hreflang="ru" href="https://remember.uz/ru"/>
+    <link rel="alternate" hreflang="uz" href="https://remember.uz/uz"/>
+    <!-- Favicon -->
+    <link rel="icon" href="{% static '/rememberApp/core-img/logo.ico' %}">
+    <!-- Core Stylesheet -->
+    <link rel="stylesheet" href="{% static '/rememberApp/css/style.css' %}">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+    <!-- MDB -->
+    <link href="{% static '/rememberApp/css/mdb.min.css' %}" rel="stylesheet"/>
+    <!-- AOS -->
+<!--    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">-->
+</head>
+<body>
+<!--Top header end-->
+<div class="simple-spinner"></div>
+
+
+<!--Manage header start-->
+<div class=" row-fluid sticky-top">
+    <div class="">
+        <nav class="navbar navbar-expand-lg navbar-dark blur blur-mask top-0 z-index-fixed shadow position-absolute py-2 start-0 end-0">
+            <!-- Container wrapper -->
+            <div class="container">
+                <a class="navbar-brand p-0" href="{% url 'home' %}">
+                    <img src="{% static '/rememberApp/core-img/logo-white.png' %}" alt="Logo remember me" width="80">
+
+                </a>
+                <!-- Toggle button -->
+                <button
+                        class="navbar-toggler"
+                        type="button"
+                        data-mdb-toggle="collapse"
+                        data-mdb-target="#navbarCenteredExample"
+                        aria-controls="navbarCenteredExample"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation"
+                >
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <!-- Collapsible wrapper -->
+                <div class="collapse navbar-collapse justify-content-center" id="navbarCenteredExample">
+                    <div class="navbar-nav text-center text-capitalize d-flex align-items-center justify-content-center" data-aos="zoom-in">
+                        <a class="quick-link" href="{% url 'about' %}">{% trans 'О нас' %}</a>
+                        <a class="quick-link" href="{% url 'services' %}">{% translate "Услуги" %}</a>
+                        <a class="quick-link" href="{% url 'home' %}">{% translate "Кладбища" %}</a>
+                        <a class="quick-link" href="{% url 'home' %}">{% translate "Галерея" %}</a>
+                        <a class="quick-link" href="{% url 'feedback' %}">{% translate "Отзывы" %}</a>
+                        <a class="quick-link btn btn-success btn-rounded mb-1 " data-mdb-ripple-init href="{% url 'contact' %}" role="button" style="margin-top: 5px;">{% translate "Контакты" %}</a>
+                    </div>
+                    <div class="text-center d-flex align-items-center justify-content-center" data-aos="zoom-in">
+                        <form action="{% url 'set_language' %}" method="POST">{% csrf_token %}
+                            <input name="next" type="hidden" value="{{ redirect_to }}"/>
+                            <select class="form-control form-control-sm text-center text-white" name="language" id="language"
+                                    onchange="this.form.submit();" required>
+                                {% get_current_language as LANGUAGE_CODE %}
+                                {% get_available_languages as LANGUAGES %}
+                                {% for lang in LANGUAGES %}
+                                <option class="text-black" value="{{ lang.0 }}"
+                                        {% if lang.0 == LANGUAGE_CODE %}
+                                        selected
+                                        {% endif %}>
+                                    {{ lang.1 }}
+                                </option>
+                                {% endfor %}
+                            </select>
+                        </form>
+                    </div>
+                </div>
+                <!-- Collapsible wrapper -->
+            </div>
+            <!-- Container wrapper -->
+        </nav>
+    </div>
+</div>
+
+<!--Manage header end-->
+
+
+{% block content %} {% endblock content %}
+<button
+        type="button"
+        class="btn btn-success btn-floating btn-lg mb-5 z-index"
+        id="btn-back-to-top" style="z-index: 999;">
+    <i class="p-0 fas fa-arrow-up"></i>
+</button>
+
+{% include './_footer.html' %}
+
+<!--<script src="{% static '/jpiu_app/js/bootstrap.bundle.min.js' %}"></script>-->
+<!-- MDB -->
+<script type="text/javascript" src="{% static '/rememberApp/js/mdb.min.js' %}"></script>
+<script src="{% static '/rememberApp/js/button_top.js' %}"></script>
+<!--<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>-->
+<script>
+  AOS.init();
+
+
+
+
+</script>
+
+</body>
+</html>

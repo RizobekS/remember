@@ -1,0 +1,141 @@
+{% extends 'services.html' %}
+{% load static i18n%}
+{% get_current_language as LANGUAGE_CODE %}
+
+<!--Website page title-->
+{% block title %}
+{% get_current_language as LANGUAGE_CODE %}
+{% if LANGUAGE_CODE == 'en' %}
+{{ detail.title_en|default_if_none:"" }}
+{% elif LANGUAGE_CODE == 'ru' %}
+{{ detail.title_ru|default_if_none:"" }}
+{% elif LANGUAGE_CODE == 'uz' %}
+{{ detail.title_uz|default_if_none:"" }}
+{% endif %}
+{% endblock title %}
+
+<!--Facebook and Telegram title preview-->
+{% block og_title %}
+{% get_current_language as LANGUAGE_CODE %}
+{% if LANGUAGE_CODE == 'en' %}
+{{ detail.title_en|default_if_none:"" }}
+{% elif LANGUAGE_CODE == 'ru' %}
+{{ detail.title_ru|default_if_none:"" }}
+{% elif LANGUAGE_CODE == 'uz' %}
+{{ detail.title_uz|default_if_none:"" }}
+{% endif %}
+{% endblock og_title %}
+
+<!--Facebook and Telegram description preview-->
+{% block description %}
+{% get_current_language as LANGUAGE_CODE %}
+{% if LANGUAGE_CODE == 'en' %}
+{{ detail.description_en|default_if_none:""}}
+{% elif LANGUAGE_CODE == 'ru' %}
+{{ detail.description_ru|default_if_none:"" }}
+{% elif LANGUAGE_CODE == 'uz' %}
+{{ detail.description_uz|default_if_none:"" }}
+{% endif %}
+{% endblock description %}
+
+<!--Facebook display preview-->
+{% block image %}
+{% get_current_language as LANGUAGE_CODE %}
+{% if LANGUAGE_CODE == 'en' and detail.image%}
+{{ request.get_host }}/media/{{ detail.image }}
+{% elif LANGUAGE_CODE == 'ru' and detail.image_ru%}
+{{ request.get_host }}/media/{{ detail.image_ru }}
+{% else %}
+{{ request.get_host }}/media/{{ detail.image_uz }}
+{% endif %}
+{% endblock image %}
+
+<!--Telegram display preview-->
+{% block telegram_image %}
+{% get_current_language as LANGUAGE_CODE %}
+{% if LANGUAGE_CODE == 'en' and detail.image%}
+{{ request.get_host }}/media/{{ detail.image }}
+{% elif LANGUAGE_CODE == 'ru' and detail.image_ru%}
+{{ request.get_host }}/media/{{ detail.image_ru }}
+{% else %}
+{{ request.get_host }}/media/{{ detail.image_uz }}
+{% endif %}
+{% endblock telegram_image %}
+
+{% block detail %}
+<section class="dento--blog-area">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-12 col-lg-12 mb-5">
+                <!-- Blog Details Area -->
+                <div class="blog-details-area">
+                    <div class="d-flex justify-content-between">
+                        <!-- Gallery -->
+                        <div class="row me-3 col-8">
+                            <div class="col-lg-6 col-md-12 mb-4 mb-lg-0">
+                                {% if detail.image %}
+                                <img
+                                        src="{{ detail.image.url }}"
+                                        class="w-100 shadow-1-strong rounded-5 mb-4"
+                                        alt="{{ detail.title_uz }}"
+                                />
+                                {% endif %}
+                                {% if detail.image_2 %}
+                                <img
+                                        src="{{ detail.image_2.url }}"
+                                        class="w-100 shadow-1-strong rounded-5 mb-4"
+                                        alt="{{ detail.title_uz }}"
+                                />
+                                {% endif %}
+                            </div>
+
+                            <div class="col-lg-6 mb-4 mb-lg-0">
+                                {% if detail.image_3 %}
+                                <img
+                                        src="{{ detail.image_3.url }}"
+                                        class="w-100 shadow-1-strong rounded-5 mb-4"
+                                        alt="{{ detail.title_uz }}"
+                                />
+                                {% endif %}
+                                {% if detail.image_4 %}
+                                <img
+                                        src="{{ detail.image_4.url }}"
+                                        class="w-100 shadow-1-strong rounded-5 mb-4"
+                                        alt="{{ detail.title_uz }}"
+                                />
+                                {% endif %}
+                            </div>
+                        </div>
+                        <!-- Gallery -->
+                        <div class="col-4 rounded-5 p-3 border border-success">
+                            <h2 class="post-title">
+                                {% if LANGUAGE_CODE == 'en' %}
+                                {{ detail.title_en|default_if_none:""}}
+                                {% elif LANGUAGE_CODE == 'ru' %}
+                                {{ detail.title_ru|default_if_none:"" }}
+                                {% elif LANGUAGE_CODE == 'uz' %}
+                                {{ detail.title_uz|default_if_none:"" }}
+                                {% endif %}
+                            </h2>
+                            <p>
+                                {% if LANGUAGE_CODE == 'en' %}
+                                {{ detail.description_en|safe|default_if_none:""}}
+                                {% elif LANGUAGE_CODE == 'ru' %}
+                                {{ detail.description_ru|safe|default_if_none:"" }}
+                                {% elif LANGUAGE_CODE == 'uz' %}
+                                {{ detail.description_uz|safe|default_if_none:"" }}
+                                {% endif %}
+                            </p>
+                            <div class="post-meta">
+                                <a href="javascript:;"><i class="fas fa-eye"></i> {{ detail.views }}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Blog Details Area End -->
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock detail %}

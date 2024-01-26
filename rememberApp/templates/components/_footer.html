@@ -1,0 +1,116 @@
+{% load static %}
+{% load i18n %}
+
+<!-- Footer -->
+<footer class="text-center text-lg-start text-white">
+    <div class="row-fluid">
+        <div class="bg-image"
+             style="background-image: url({% static 'rememberApp/bg-img/footer_bg.png' %});
+                height: 500px;">
+            <div class="mask" style="background-color: rgba(57,178,72,0.5)">
+                <section class="pt-3">
+                    <div class="container-fluid text-center text-md-start mt-5">
+                        <!-- Grid row -->
+                        <div class="row mt-3">
+                            <!-- Social media -->
+                            <div class="col-sm-3 col-md-3 col-lg-4 col-xl-3 text-center mx-auto mb-4">
+                                <h6 class="text-uppercase fw-bold mb-4">
+                                    <a href="{% url 'home' %}"><img src="{% static '/rememberApp/core-img/logo.png' %}"
+                                                                    alt="Logo Rememberme" width="50%"></a>
+                                </h6>
+                                <div>
+                                    <a href="https://t.me/uzb_ridp" target="_blank" class="me-4 text-reset">
+                                        <i class="fab fa-telegram"></i>
+                                    </a>
+                                    <a href="https://www.facebook.com/profile.php?id=61555690498192" target="_blank"
+                                       class="me-4 text-reset">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </a>
+<!--                                    <a href="https://www.youtube.com/channel/UCYib8rCrsF7z2MmTPbnwjgg" target="_blank"-->
+<!--                                       class="me-4 text-reset">-->
+<!--                                        <i class="fab fa-youtube"></i>-->
+<!--                                    </a>-->
+                                    <a href="https://www.instagram.com/rememberme.uz?igsh=MWp5dnY2bWl1aTJsag%3D%3D&utm_source=qr" target="_blank"
+                                       class="me-4 text-reset">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                    <a href="https://ok.ru/profile/605723356446"
+                                       target="_blank"
+                                       class="me-4 text-reset">
+                                        <i class="fab fa-odnoklassniki-square"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- Social media -->
+
+                            <!-- Links -->
+                            <div class="col-sm-1 col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                                <!-- Links -->
+                                <h6 class="text-uppercase fw-bold mb-4">
+                                    {% translate "Ссылки" %}
+                                </h6>
+                                <div class="row-fluid col-12 opening-hours__child">
+                                    <div class="me-5">
+                                        <p>
+                                            <a href="{% url 'about' %}" class="quick-link">{% translate "О нас" %}</a>
+                                        </p>
+                                        <p>
+                                            <a href="{% url 'services' %}" class="quick-link">{% translate "Услуги" %}</a>
+                                        </p>
+                                        <p>
+                                            <a href="{% url 'home' %}" class="quick-link">{% translate "Кладбища" %}</a>
+                                        </p>
+                                        <p>
+                                            <a href="{% url 'home' %}" class="quick-link">{% translate "Галерея" %}</a>
+                                        </p>
+                                        <p>
+                                            <a href="{% url 'feedback' %}" class="quick-link">{% translate "Отзывы" %}</a>
+                                        </p>
+                                        <p>
+                                            <a href="{% url 'contact' %}" class="quick-link">{% translate "Контакты" %}</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Links -->
+
+                            <!-- Contacts -->
+                            <div class="col-sm-3 col-md-3 col-lg-2 col-xl-3 mx-auto mb-md-0 mb-4">
+                                <!-- Links -->
+                                <h6 class="text-uppercase fw-bold mb-4">
+                                    {% translate "Контакты" %}
+                                </h6>
+                                <p>
+                                    <a href="https://goo.gl/maps/d7UXv1gCC22TnFuu5" target="_blank"
+                                       class="quick-link"><i
+                                            class="fas fa-map-marker-alt me-3"></i> <span>{% trans "улица Бобура 77, Ташкент, Узбекситан" %}</span></a>
+                                </p>
+                                <p>
+                                    <a href="mailto:rememberme.uz@mail.ru" class="quick-link"><i
+                                            class="fas fa-envelope me-3"></i>
+                                        <span>rememberme.uz@mail.ru</span></a>
+                                </p>
+                                <p style="color: white;"><a href="tel:+998935502662" class="quick-link"><i
+                                        class="fas fa-phone me-3"></i>+99893 550-26-62</a></p>
+                                <p style="color: white;">{% trans 'При использовании информации сайта ссылка на источник обязательна' %}</p>
+                            </div>
+                            <!-- Contacts -->
+                        </div>
+                        <!-- Grid row -->
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <!-- Copyright -->
+    <div class="text-center pt-3 bg-dark">
+        © RememberMe 2023 -
+        <script>document.write(new Date().getFullYear());</script>
+    </div>
+    <!-- Copyright -->
+    <div class="text-center text-muted bg-dark">
+        Powered by:
+        <a href="https://t.me/WEBadiko" target="_blank" class="text-info">WEBadiko</a>
+    </div>
+</footer>
+<!-- Footer -->

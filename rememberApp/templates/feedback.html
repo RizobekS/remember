@@ -1,0 +1,115 @@
+{% extends 'components/base.html' %}
+{% load static i18n%}
+
+{% block title %}{% trans "Отзывы"%}{% endblock title %}
+
+{% block content %}
+<div class="row-fluid mb-5">
+    <div class=" gradient-custom" style="height:300px;">
+        <div class="d-flex align-items-center justify-content-center mb-3 text-white h-100">
+            <div class="mb-auto p-2"></div>
+            <div class="p-2"><h1 class="mb-3">{% trans 'Отзывы' %}</h1></div>
+        </div>
+    </div>
+
+</div>
+
+<!--The cost ection-->
+<section class="">
+    <div class="">
+        <div class="bg-image"
+             style=" background-image: url('{% static 'rememberApp/bg-img/calculate_bg.png' %}'); height: 100vh;">
+            <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+                {% if messages %}
+                <div class="row">
+                    <div class="col-sm-12 col-sm-offset-3">
+                        {% for message in messages %}
+                        {% if name != "Упс, что-то пошло не так!" %}
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <h6><strong>{{ name }}</strong>, {% trans "большое спасибо за ваше сообщение! Мы свяжемся с Вами в скором времени!" %}</h6>
+                            <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
+                            </button>
+                        </div>
+                        {% else %}
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <h6><strong>{% trans "Упс, что-то пошло не так!"%}</strong></h6>
+                            <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
+                            </button>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+                <div class="container d-flex justify-content-end align-items-center h-100">
+                    <div class="gradient-custom-white p-5 rounded-9 col-12 col-md-6 col-lg-4 ">
+                        <form action="{% url 'feedback' %}" method="post">{% csrf_token %}
+                            <div class="row g-1">
+                                <div class="col-12">
+                                    <!-- Name input -->
+                                    <div data-mdb-input-init class="form-outline mb-3">
+                                        <input type="text" name="name" id="form8Example1" class="form-control text-white"/>
+                                        <label class="form-label text-white" for="form8Example1">{% trans 'Имя' %}</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <!-- Email input -->
+                                    <div data-mdb-input-init class="form-outline mb-3">
+                                        <input type="email" name="email" id="form8Example2" class="form-control text-white"/>
+                                        <label class="form-label text-white" for="form8Example1">{% trans 'Почта' %}</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <!-- Phone input -->
+                                    <div data-mdb-input-init class="form-outline mb-3">
+                                        <input type="text" name="phone" id="form9Example3" class="form-control text-white"
+                                               required/>
+                                        <label class="form-label text-white" for="form8Example2">{% trans 'Телефон' %}</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <!-- Phone input -->
+                                    <div data-mdb-input-init class="col-12 mb-3">
+                                        <div class="col-12" style="padding: 0!important; border: none">
+                                            <select style="background-color: transparent;" name="service" id="select" required class="forselect ps-2 col-12 border rounded text-white">
+                                                <option class="ms-2" value="" selected disabled hidden>{% trans "Выбрать услугу" %}
+                                                </option>
+                                                {% for service in services %}
+                                                <option value="{{ service.pk }}" class="bg-success">
+                                                    {% if LANGUAGE_CODE == 'en' %}
+                                                    {{ service.title_en }}
+                                                    {% elif LANGUAGE_CODE == 'ru'%}
+                                                    {{ service.title_ru }}
+                                                    {% elif LANGUAGE_CODE == 'uz' %}
+                                                    {{ service.title_uz }}
+                                                    {% endif %}
+                                                </option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Message input -->
+                                <div data-mdb-input-init class="form-outline mb-4">
+                                    <textarea name="text" class="form-control text-white" id="form8Example7" rows="4"></textarea>
+                                    <label class="form-label text-white" for="form8Example7">{% trans 'Сообщение' %}</label>
+                                </div>
+                                <div class="form-check d-flex justify-content-center mb-4">
+                                    <input class="form-check-input me-2" type="checkbox" name="checkbox" value="" id="form2Example33" />
+                                    <label class="form-check-label text-white" for="form2Example33">
+                                        {% trans 'Соглашаюсь на публичную оферту' %}
+                                    </label>
+                                </div>
+                                <div class="col-12 d-flex justify-content-center">
+                                    <button data-mdb-ripple-init type="submit" class="btn btn-success mb-4">{% trans 'Отправить' %}</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--The cost section end-->
+{% endblock %}

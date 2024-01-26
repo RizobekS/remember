@@ -1,0 +1,48 @@
+{% extends 'components/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{% trans "О нас"%}{% endblock title %}
+
+{% block content %}
+
+<div class="row-fluid mb-5">
+    <div class=" gradient-custom" style="height:300px;">
+        <div class="d-flex align-items-center justify-content-center mb-3 text-white h-100">
+            <div class="mb-auto p-2"></div>
+            <div class="p-2"><h1 class="mb-3">{% trans 'О нас' %}</h1></div>
+        </div>
+    </div>
+
+</div>
+{% block detail %}
+<div class="container">
+    <div class="row-fluid mt-5 mb-5">
+        <div class="d-flex justify-content-between row">
+            <div class="col-sm-12 col-md-6">
+                <p>
+                {% if LANGUAGE_CODE == 'en' %}
+                {{ info_about.about_en|safe|linebreaksbr }}
+                {% elif LANGUAGE_CODE == 'uz' %}
+                {{ info_about.about_uz|safe|linebreaksbr }}
+                {% elif LANGUAGE_CODE == 'ru' %}
+                {{ info_about.about_ru|safe|linebreaksbr }}
+                {% endif %}
+                </p>
+            </div>
+            <div class="col-sm-12 col-md-6" data-aos="zoom-out">
+                <video src="{% static 'rememberApp/videos/1.MP4' %}"
+                       controls
+                       width="100%"
+                       poster="{{ info_about.image_en.url }}"
+
+                >
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock detail %}
+{% endblock content %}

@@ -1,0 +1,316 @@
+{% extends 'components/base.html' %}
+{% load static %}
+{% load humanize %}
+{% load i18n %}
+
+{% block content %}
+<!-- Banner section -->
+<section>
+    <div class="bg-image"
+         style="background-image: url({% static 'rememberApp/bg-img/1.png' %}); height: 650px; top: 1;">
+
+        <div class="mask" style="background-color: rgba(0, 0, 0, 0.4)">
+            <div class="d-flex align-items-center flex-column mb-3 text-white h-100">
+                <div class="mb-auto p-2"></div>
+                <div class="p-2"><h1 class="mb-3">{% trans 'Уборка могил на кладбищах в Узбекистане' %}</h1>
+                    <p class="col-8" style="font-family: MontserratAlternates-Regular;">
+                        {% trans 'Чистая и опрятная могила радует глаз и дарит душевное спокойствие и внутренний комфорт' %}
+                    </p>
+                    <button class="btn btn-success mb-5 btn-rounded"><a href="#calculate" class="text-white">{% trans 'Расчёт стоимости' %}</a></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Us section start-->
+<section>
+    <div class="container mb-5">
+        <div class="mt-5">
+            <div class="d-flex justify-content-between row">
+                <div class="col-sm-12 col-md-6" data-aos="zoom-out">
+                    <video src="{% static 'rememberApp/videos/1.MP4' %}"
+                           controls
+                           width="100%"
+                           poster="{{ info_about.image_en.url }}"
+                           class="rounded-7"
+
+                    >
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                    <h1 class="text-center text-bold"
+                        data-aos="fade-left"
+                        data-aos-anchor="#example-anchor"
+                        data-aos-offset="500"
+                        data-aos-duration="500">{% translate "О нас" %}
+                    </h1>
+                    <div>
+                        <p>
+                            {% if LANGUAGE_CODE == 'en' %}
+                            {{ info_about.about_en|safe|linebreaksbr }}
+                            {% elif LANGUAGE_CODE == 'uz' %}
+                            {{ info_about.about_uz|safe|linebreaksbr }}
+                            {% elif LANGUAGE_CODE == 'ru' %}
+                            {{ info_about.about_ru|safe|linebreaksbr }}
+                            {% endif %}
+                        </p>
+                    </div>
+                    <a href="{% url 'about' %}">
+                        <button class="btn btn-success mt-5">{% trans 'Подробнее' %}</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- About Us section end-->
+
+<!--cemeteries section start-->
+<section class="mb-5">
+    <div class=" gradient-custom">
+        <div class="container">
+            <h1 class="text-white text-center mb-5">{% trans 'Поиск кладбищ по всему Узбекистану' %}</h1>
+            <div class="d-flex justify-content-center align-items-center">
+                <div class="gradient-custom-white rounded-9 col-12 col-md-6 col-lg-6 ">
+                    <h4 class="text-white m-3">{% trans 'Список и дополнительные сведения' %}</h4>
+                    <hr class="hr hr-blurry bg-white" style="height: 3px;">
+                    <div class="px-5 my-5">
+                        <div id="carouselExampleCaptions" class="carousel slide" data-mdb-ride="carousel"
+                             data-mdb-carousel-init>
+                            <div class="carousel-indicators">
+                                <button
+                                        type="button"
+                                        data-mdb-target="#carouselExampleCaptions"
+                                        data-mdb-slide-to="0"
+                                        class="active"
+                                        aria-current="true"
+                                        aria-label="Slide 1"
+                                ></button>
+                                <button
+                                        type="button"
+                                        data-mdb-target="#carouselExampleCaptions"
+                                        data-mdb-slide-to="1"
+                                        aria-label="Slide 2"
+                                ></button>
+                                <button
+                                        type="button"
+                                        data-mdb-target="#carouselExampleCaptions"
+                                        data-mdb-slide-to="2"
+                                        aria-label="Slide 3"
+                                ></button>
+                            </div>
+                            <div class="carousel-inner rounded-9">
+                                <div class="carousel-item active">
+                                    <img src="https://mdbcdn.b-cdn.net/img/new/slides/041.webp" class="d-block w-100"
+                                         alt="Wild Landscape"/>
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h5>First slide label</h5>
+                                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="https://mdbcdn.b-cdn.net/img/new/slides/042.webp" class="d-block w-100"
+                                         alt="Camera"/>
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h5>Second slide label</h5>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-mdb-target="#carouselExampleCaptions"
+                                    data-mdb-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-mdb-target="#carouselExampleCaptions"
+                                    data-mdb-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--cemeteries section end-->
+
+<!--Services section start-->
+<section class="mt-5 mb-5">
+    <div class="container">
+        <h1 class="text-center text-success ">{% trans 'Услуги' %}</h1>
+        <div class="row mt-5">
+            {% for service in services %}
+            <div class="col-12 col-sm-6 col-md-4 mb-5">
+                <div class="card h-100 bg-card-service" data-aos="flip-up">
+                    <div class="card-body">
+                        <div class=" mb-3 bg-warning col-3 rounded-circle d-flex justify-content-center align-items-center">
+                            <img src="{{ service.icon.url }}" alt="Service icon" width="90px">
+                        </div>
+                        <h4 class="card-title mb-5">
+                            {% if LANGUAGE_CODE == 'en' %}
+                            {{ service.title_en|default_if_none:""|truncatechars:80 }}
+                            {% elif LANGUAGE_CODE == 'ru' %}
+                            {{ service.title_ru|default_if_none:""|truncatechars:80 }}
+                            {% elif LANGUAGE_CODE == 'uz' %}
+                            {{ service.title_uz|default_if_none:""|truncatechars:80 }}
+                            {% endif %}
+                        </h4>
+                        <div class="d-flex align-items-end flex-column">
+                            <button class="btn btn-success">
+                                <a href="{% url 'service_detail' pk=service.pk %}" class="text-white">
+                                    {% trans 'Подробнее' %}
+                                </a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<!--Services section end-->
+
+<!--The cost ection-->
+<section class="" id="calculate">
+    <div class="">
+        <div class="bg-image"
+             style=" background-image: url('{% static 'rememberApp/bg-img/calculate_bg.png' %}'); height: 100vh;">
+            <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+                {% if messages %}
+                <div class="">
+                    <div class="col-sm-12 col-sm-offset-3">
+                        {% for message in messages %}
+                        {% if name != "Упс, что-то пошло не так!" %}
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <h6><strong>{{ name }}</strong>, {% trans "большое спасибо за ваше сообщение! Мы свяжемся с Вами в скором времени!" %}</h6>
+                            <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        {% else %}
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <h6><strong>{% trans "Упс, что-то пошло не так!"%}</strong></h6>
+                            <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+                <div class="container d-flex justify-content-end align-items-center h-100">
+                    <div class="gradient-custom-white p-5 rounded-9 col-12 col-md-6 col-lg-4 ">
+                        <form action="{% url 'home' %}#calculate" method="post">{% csrf_token %}
+                            <div class="row g-1">
+                                <div class="col-12">
+                                    <!-- Name input -->
+                                    <div data-mdb-input-init class="form-outline mb-3">
+                                        <input type="text" name="name" id="form9Example1"
+                                               class="form-control text-white"/>
+                                        <label class="form-label text-white" for="form9Example1">{% trans 'Имя' %}</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <!-- Email input -->
+                                    <div data-mdb-input-init class="form-outline mb-3">
+                                        <input type="email" name="email" id="form9Example2"
+                                               class="form-control text-white"/>
+                                        <label class="form-label text-white" for="form9Example1">{% trans 'Почта' %}</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <!-- Phone input -->
+                                    <div data-mdb-input-init class="form-outline mb-3">
+                                        <input type="text" name="phone" id="form9Example3"
+                                               class="form-control text-white"
+                                               required/>
+                                        <label class="form-label text-white" for="form9Example2">{% trans 'Телефон' %}</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <!-- Phone input -->
+                                    <div data-mdb-input-init class="col-12 mb-3">
+                                        <div class="col-12" style="padding: 0!important; border: none">
+                                            <select style="background-color: transparent;" name="service" id="select"
+                                                    required class="forselect ps-2 col-12 border rounded text-white">
+                                                <option class="ms-2" value="" selected disabled hidden>{% trans "Выбрать услугу" %}
+                                                </option>
+                                                {% for service in services %}
+                                                <option value="{{ service.pk }}" class="bg-success">
+                                                    {% if LANGUAGE_CODE == 'en' %}
+                                                    {{ service.title_en }}
+                                                    {% elif LANGUAGE_CODE == 'ru'%}
+                                                    {{ service.title_ru }}
+                                                    {% elif LANGUAGE_CODE == 'uz' %}
+                                                    {{ service.title_uz }}
+                                                    {% endif %}
+                                                </option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Message input -->
+                                <div data-mdb-input-init class="form-outline mb-4">
+                                    <textarea name="text" class="form-control text-white" id="form6Example7"
+                                              rows="4"></textarea>
+                                    <label class="form-label text-white" for="form6Example7">{% trans 'Сообщение' %}</label>
+                                </div>
+                                <div class="form-check d-flex justify-content-center mb-4">
+                                    <input class="form-check-input me-2" type="checkbox" name="checkbox" value=""
+                                           id="form2Example33"/>
+                                    <label class="form-check-label text-white" for="form2Example33">
+                                        {% trans 'Соглашаюсь на публичную оферту' %}
+                                    </label>
+                                </div>
+                                <div class="col-12 d-flex justify-content-center">
+                                    <button data-mdb-ripple-init type="submit" class="btn btn-success mb-4">{% trans 'Отправить' %}
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--The cost section end-->
+
+<!--approved feedbacks-->
+<section>
+    <div class="container-fluid overflow-auto">
+        <h1 class="text-success text-center mt-5">{% trans 'Отзывы' %}</h1>
+        <div class="d-flex flex-nowrap overflow-x-scroll mt-5 justify-content-around">
+            {% for feedback in approved_feedbacks %}
+            <div class="card border border-success shadow-0 mb-3 me-5 col-8 col-sm-6 col-md-4 col-lg-3">
+                <div class="card-header bg-transparent border-success">
+                    <h3>{{ feedback.name }}</h3>
+<!--                    <div class="text-muted">{{ feedback.date }}</div>-->
+                </div>
+                <div class="card-body text-success">
+                    {% if LANGUAGE_CODE == 'en' %}
+                    <h5 class="card-title">{% trans 'Услуги' %}: {{ feedback.service.title_en }}</h5>
+                    {% elif LANGUAGE_CODE == 'ru' %}
+                    <h5 class="card-title">{% trans 'Услуги' %}: {{ feedback.service.title_ru }}</h5>
+                    {% elif LANGUAGE_CODE == 'uz' %}
+                    <h5 class="card-title">{% trans 'Услуги' %}: {{ feedback.service.title_uz }}</h5>
+                    {% endif %}
+                    <p class="card-text">{{ feedback.text }}</p>
+                </div>
+                <div class="card-footer bg-transparent border-success text-muted">{{ feedback.date|naturaltime }}</div>
+            </div>
+            {% endfor %}
+
+
+        </div>
+    </div>
+</section>
+<!--approved feedbacks end-->
+{% endblock content %}
