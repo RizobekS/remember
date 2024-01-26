@@ -181,7 +181,10 @@
         <div class="bg-image"
              style=" background-image: url('{% static 'rememberApp/bg-img/calculate_bg.png' %}'); height: 100vh;">
             <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
-                {% if messages %}
+                <div class="mt-5">
+                    <h1 class="text-center text-success">{% trans 'Расчет стоимости' %}</h1>
+                </div>
+                            {% if messages %}
                 <div class="">
                     <div class="col-sm-12 col-sm-offset-3">
                         {% for message in messages %}
