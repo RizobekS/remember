@@ -1,0 +1,67 @@
+{% extends 'components/base.html' %}
+{% load static %}
+{% load humanize %}
+{% load i18n %}
+
+{% block title %}{% trans "Кладбища"%}|{% endblock title %}
+
+{% block content %}
+<div class="row-fluid mb-5">
+    <div class=" gradient-custom" style="height:300px;">
+        <div class="d-flex align-items-center justify-content-center mb-3 text-white h-100">
+            <div class="mb-auto p-2"></div>
+            <div class="p-2"><h1 class="mb-3">{% trans 'Кладбища' %}</h1></div>
+        </div>
+    </div>
+
+</div>
+{% block detail %}
+<section class="mt-5 mb-5">
+    <div class="container">
+        <div class="row mt-3">
+            {% for cemetery in list_cemetery %}
+            <div class="col-12 col-sm-6 col-md-4 mb-5">
+                <div class="card text-center bg-card-service h-100" data-aos="flip-up">
+                    <a href="{% url 'cemetery_details' pk=cemetery.pk %}" class="stretched-link">
+                        {% if cemetery.image %}
+                        <div class="bg-image hover-overlay rounded-9" data-mdb-ripple-color="light">
+                            <img src="{{ cemetery.image.url }}" alt="cemetery Image" class="img-fluid"/>
+                        </div>
+                        {% else %}
+                        <div class="bg-image hover-overlay rounded-9" data-mdb-ripple-color="light">
+                            <img src="{% static 'rememberApp/bg-img/bg_cemeteries3.png' %}" alt="cemetery Image" class="img-fluid"/>
+                        </div>
+                        {% endif %}
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <a href="{% url 'cemetery_details' pk=cemetery.pk %}" class="stretched-link">
+                            {% if LANGUAGE_CODE == 'en' %}
+                                {{ cemetery.title_en|default_if_none:""|truncatechars:80 }}
+                                {% elif LANGUAGE_CODE == 'ru' %}
+                                {{ cemetery.title_ru|default_if_none:""|truncatechars:80 }}
+                                {% else %}
+                                {{ cemetery.title_uz|default_if_none:""|truncatechars:80 }}
+                                {% endif %}
+                            </a>
+                        </h5>
+                        <p class="card-text">
+                            {% if LANGUAGE_CODE == 'en' %}
+                                {{ cemetery.description_en|default_if_none:""|safe|truncatechars:200 }}
+                                {% elif LANGUAGE_CODE == 'ru' %}
+                                {{ cemetery.description_ru|default_if_none:""|safe|truncatechars:200 }}
+                                {% elif LANGUAGE_CODE == 'uz' %}
+                                {{ cemetery.description_uz|default_if_none:""|safe|truncatechars:200 }}
+                                {% endif %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+
+</section>
+{% endblock detail %}
+{% endblock content %}

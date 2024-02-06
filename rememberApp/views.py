@@ -10,7 +10,7 @@ from rememberApp.models import AboutPage, Services, CalculateCost, Feedback, Gra
 
 
 def home(request):
-    graveyard = Graveyard.objects.all()
+    graveyard = Graveyard.objects.all().order_by('id')
     info_about = AboutPage.objects.first()
     approved_feedback = Feedback.objects.filter(approved=True).order_by('-date')
     if request.LANGUAGE_CODE == 'en':
@@ -38,6 +38,40 @@ def home(request):
         return render(request, "home.html",
                       {'services': list_services, 'info_about': info_about, 'approved_feedbacks': approved_feedback,
                        'graveyards': graveyard})
+
+
+def cemeteries(request):
+    if request.LANGUAGE_CODE == 'en':
+        list_cemetery = Graveyard.objects.filter(english=True).order_by('-pk')
+    elif request.LANGUAGE_CODE == 'ru':
+        list_cemetery = Graveyard.objects.filter(russian=True).order_by('-pk')
+    else:
+        list_cemetery = Graveyard.objects.filter(uzbek=True).order_by('-pk')
+
+    page = request.GET.get('page', 1)
+    paginator = Paginator(list_cemetery, 10)  # number of news in each page
+
+    try:
+        list_cemetery = paginator.page(page)
+    except PageNotAnInteger:
+        list_cemetery = paginator.page(1)
+    except EmptyPage:
+        list_cemetery = paginator.page(paginator.num_pages)
+
+    return render(request, "cemeteries.html", {"list_cemetery": list_cemetery})
+
+
+def cemetery_details(request, pk):
+    detail = Graveyard.objects.get(pk=pk)
+    if request.LANGUAGE_CODE == 'en' and not detail.english:
+        return HttpResponseRedirect(f"/{request.LANGUAGE_CODE}/cemeteries/")
+    elif request.LANGUAGE_CODE == 'uz' and not detail.uzbek:
+        return HttpResponseRedirect(f"/{request.LANGUAGE_CODE}/cemeteries/")
+    elif request.LANGUAGE_CODE == 'ru' and not detail.russian:
+        return HttpResponseRedirect(f"/{request.LANGUAGE_CODE}/cemeteries/")
+    similar_cemeteries = Graveyard.objects.exclude(pk=pk)
+
+    return render(request, "cemetery-details.html", {'detail': detail, 'similar_cemeteries': similar_cemeteries})
 
 
 def about(request):

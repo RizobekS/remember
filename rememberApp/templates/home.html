@@ -73,62 +73,68 @@
         <div class="container">
             <h1 class="text-white text-center mb-5">{% trans 'Поиск кладбищ по всему Узбекистану' %}</h1>
             <div class="d-flex justify-content-center align-items-center">
-                <div class="gradient-custom-white rounded-9 col-12 col-md-6 col-lg-6 ">
+                <div class="gradient-custom-white rounded-9 col-12 ">
                     <h4 class="text-white m-3">{% trans 'Список и дополнительные сведения' %}</h4>
                     <hr class="hr hr-blurry bg-white" style="height: 3px;">
                     <div class="px-5 my-5">
-                        <div id="carouselExampleCaptions" class="carousel slide" data-mdb-ride="carousel"
+                        <div id="carouselExampleTouch" class="carousel slide carousel-fade" data-mdb-ride="carousel"
                              data-mdb-carousel-init>
                             <div class="carousel-indicators">
                                 <button
-                                        type="button"
-                                        data-mdb-target="#carouselExampleCaptions"
-                                        data-mdb-slide-to="0"
-                                        class="active"
-                                        aria-current="true"
-                                        aria-label="Slide 1"
+                                  type="button"
+                                  data-mdb-target="#carouselExampleTouch"
+                                  data-mdb-slide-to="0"
+                                  class="active"
+                                  aria-current="true"
+                                  aria-label="Slide 1"
                                 ></button>
                                 <button
-                                        type="button"
-                                        data-mdb-target="#carouselExampleCaptions"
-                                        data-mdb-slide-to="1"
-                                        aria-label="Slide 2"
+                                  type="button"
+                                  data-mdb-target="#carouselExampleTouch"
+                                  data-mdb-slide-to="1"
+                                  aria-label="Slide 2"
                                 ></button>
                                 <button
-                                        type="button"
-                                        data-mdb-target="#carouselExampleCaptions"
-                                        data-mdb-slide-to="2"
-                                        aria-label="Slide 3"
+                                  type="button"
+                                  data-mdb-target="#carouselExampleTouch"
+                                  data-mdb-slide-to="2"
+                                  aria-label="Slide 3"
                                 ></button>
                             </div>
-                            <div class="carousel-inner rounded-9">
-                                <div class="carousel-item active">
-                                    <img src="https://mdbcdn.b-cdn.net/img/new/slides/041.webp" class="d-block w-100"
-                                         alt="Wild Landscape"/>
-                                    <div class="carousel-caption d-none d-md-block">
-                                        <h5>First slide label</h5>
-                                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                            <div class="carousel-inner rounded-9 shadow-4-strong">
+                                <div class="carousel-item active" style="max-height: 600px">
+                                    <img src="{% static 'rememberApp/bg-img/bg_cemeteries.jpg' %}" class="d-block w-100" alt=""/>
+                                    <div class="carousel-caption d-none d-md-block blur blur-mask rounded-9">
+                                        <h5>{% trans 'Домбрабатское кладбище' %}</h5>
+                                        <p>{% trans 'На кладбище имеются участки для иудейских, мусульманских и других конфессиональных захоронений' %}</p>
+                                        <a href="{% url 'cemeteries' %}" class="btn btn-success">{% trans 'Больше' %}</a>
                                     </div>
                                 </div>
-                                <div class="carousel-item">
-                                    <img src="https://mdbcdn.b-cdn.net/img/new/slides/042.webp" class="d-block w-100"
-                                         alt="Camera"/>
-                                    <div class="carousel-caption d-none d-md-block">
-                                        <h5>Second slide label</h5>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                <div class="carousel-item" style="max-height: 600px">
+                                    <img src="{% static 'rememberApp/bg-img/bg_cemeteries2.png' %}" class="d-block w-100" alt="Camera"/>
+                                    <div class="carousel-caption d-none d-md-block blur blur-mask rounded-9">
+                                        <h5>{% trans 'Боткинское кладбище' %}</h5>
+                                        <p>{% trans 'Первое городское кладбище, более известное как кладбище по улице Боткина или Бо́ткинское кладбище' %}</p>
+                                        <a href="{% url 'cemeteries' %}" class="btn btn-success">{% trans 'Больше' %}</a>
+                                    </div>
+                                </div>
+                                <div class="carousel-item" style="max-height: 600px">
+                                    <img src="{% static 'rememberApp/bg-img/bg_cemeteries3.png' %}" class="d-block w-100" alt="Exotic Fruits"/>
+                                    <div class="carousel-caption d-none d-md-block blur blur-mask rounded-9">
+                                        <h5>{% trans 'Чигатайское кладбище' %}</h5>
+                                        <p>{% trans 'игата́йское кладбище — мусульманское, узбекское кладбище нового типа, то есть с элементами, присущими европейским кладбищам — наличие скульптурных надгробий' %}</p>
+                                        <a href="{% url 'cemeteries' %}" class="btn btn-success">{% trans 'Больше' %}</a>
                                     </div>
                                 </div>
                             </div>
-                            <button class="carousel-control-prev" type="button" data-mdb-target="#carouselExampleCaptions"
-                                    data-mdb-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-mdb-target="#carouselExampleCaptions"
-                                    data-mdb-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
-                            </button>
+                        <button class="carousel-control-prev" type="button" data-mdb-target="#carouselExampleTouch" data-mdb-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-mdb-target="#carouselExampleTouch" data-mdb-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
                         </div>
                     </div>
                 </div>

@@ -30,20 +30,20 @@
 {% block description %}
 {% get_current_language as LANGUAGE_CODE %}
 {% if LANGUAGE_CODE == 'en' %}
-{{ detail.description_en|default_if_none:""}}
+{{ detail.description_en|safe|default_if_none:""}}
 {% elif LANGUAGE_CODE == 'ru' %}
-{{ detail.description_ru|default_if_none:"" }}
+{{ detail.description_ru|safe|default_if_none:"" }}
 {% elif LANGUAGE_CODE == 'uz' %}
-{{ detail.description_uz|default_if_none:"" }}
+{{ detail.description_uz|safe|default_if_none:"" }}
 {% endif %}
 {% endblock description %}
 
 <!--Facebook display preview-->
 {% block image %}
 {% get_current_language as LANGUAGE_CODE %}
-{% if LANGUAGE_CODE == 'en' and detail.image%}
+{% if LANGUAGE_CODE == 'en' and detail.image %}
 {{ request.get_host }}/media/{{ detail.image }}
-{% elif LANGUAGE_CODE == 'ru' and detail.image_ru%}
+{% elif LANGUAGE_CODE == 'ru' and detail.image_ru %}
 {{ request.get_host }}/media/{{ detail.image_ru }}
 {% else %}
 {{ request.get_host }}/media/{{ detail.image_uz }}

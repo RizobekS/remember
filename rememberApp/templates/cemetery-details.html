@@ -1,0 +1,160 @@
+{% extends 'cemeteries.html' %}
+{% load static i18n%}
+{% get_current_language as LANGUAGE_CODE %}
+
+<!--Website page title-->
+{% block title %}
+{% get_current_language as LANGUAGE_CODE %}
+{% if LANGUAGE_CODE == 'en' %}
+{{ detail.title_en|default_if_none:"" }}
+{% elif LANGUAGE_CODE == 'ru' %}
+{{ detail.title_ru|default_if_none:"" }}
+{% elif LANGUAGE_CODE == 'uz' %}
+{{ detail.title_uz|default_if_none:"" }}
+{% endif %}
+{% endblock title %}
+
+<!--Facebook and Telegram title preview-->
+{% block og_title %}
+{% get_current_language as LANGUAGE_CODE %}
+{% if LANGUAGE_CODE == 'en' %}
+{{ detail.title_en|default_if_none:"" }}
+{% elif LANGUAGE_CODE == 'ru' %}
+{{ detail.title_ru|default_if_none:"" }}
+{% elif LANGUAGE_CODE == 'uz' %}
+{{ detail.title_uz|default_if_none:"" }}
+{% endif %}
+{% endblock og_title %}
+
+<!--Facebook and Telegram description preview-->
+{% block description %}
+{% get_current_language as LANGUAGE_CODE %}
+{% if LANGUAGE_CODE == 'en' %}
+{{ detail.description_en|safe|default_if_none:""}}
+{% elif LANGUAGE_CODE == 'ru' %}
+{{ detail.description_ru|safe|default_if_none:"" }}
+{% elif LANGUAGE_CODE == 'uz' %}
+{{ detail.description_uz|safe|default_if_none:"" }}
+{% endif %}
+{% endblock description %}
+
+<!--Facebook display preview-->
+{% block image %}
+{% get_current_language as LANGUAGE_CODE %}
+{% if LANGUAGE_CODE == 'en' and detail.image %}
+{{ request.get_host }}/media/{{ detail.image }}
+{% elif LANGUAGE_CODE == 'ru' and detail.image_ru %}
+{{ request.get_host }}/media/{{ detail.image_ru }}
+{% else %}
+{{ request.get_host }}/media/{{ detail.image_uz }}
+{% endif %}
+{% endblock image %}
+
+<!--Telegram display preview-->
+{% block telegram_image %}
+{% get_current_language as LANGUAGE_CODE %}
+{% if LANGUAGE_CODE == 'en' and detail.image %}
+{{ request.get_host }}/media/{{ detail.image }}
+{% elif LANGUAGE_CODE == 'ru' and detail.image_ru %}
+{{ request.get_host }}/media/{{ detail.image_ru }}
+{% else %}
+{{ request.get_host }}/media/{{ detail.image_uz }}
+{% endif %}
+{% endblock telegram_image %}
+
+{% block detail %}
+
+<!-- ****** Blog Area Start ******* -->
+<section>
+    <div class="container">
+
+        <div class="row">
+            <div class="col-12 col-lg-12 mb-5">
+                <!-- Blog Details Area -->
+                <div class="blog-details-area">
+                    {% if detail.image %}
+                    <div class="bg-image hover-overlay rounded-9 mb-5" data-aos="zoom-out">
+                        <img src="{{ detail.image.url }}" class="lazy img-fluid rounded-9" alt="image">
+                    </div>
+                    {% else %}
+                        <div class="bg-image hover-overlay rounded-9 mb-5" data-mdb-ripple-color="light">
+                            <img src="{% static 'rememberApp/bg-img/bg_cemeteries3.png' %}" alt="cemetery Image" class="img-fluid"/>
+                        </div>
+                    {% endif %}
+                    <h2 class="post-title">
+                        {% if LANGUAGE_CODE == 'en' %}
+                        {{ detail.title_en|default_if_none:""}}
+                        {% elif LANGUAGE_CODE == 'ru' %}
+                        {{ detail.title_ru|default_if_none:"" }}
+                        {% elif LANGUAGE_CODE == 'uz' %}
+                        {{ detail.title_uz|default_if_none:"" }}
+                        {% endif %}
+                    </h2>
+                    <p>
+                        {% if LANGUAGE_CODE == 'en' %}
+                        {{ detail.description_en|safe|default_if_none:""}}
+                        {% elif LANGUAGE_CODE == 'ru' %}
+                        {{ detail.description_ru|safe|default_if_none:"" }}
+                        {% elif LANGUAGE_CODE == 'uz' %}
+                        {{ detail.description_uz|safe|default_if_none:"" }}
+                        {% endif %}
+                    </p>
+                    <div class="post-meta">
+                        <a href="javascript:;"><i class="far fa-calendar  "></i> {{detail.date}}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container overflow-auto">
+        {% if similar_cemeteries %}
+        <h1 class="text-center mb-5">{% trans "Другие кладбища" %}</h1>
+        <div class="d-flex flex-nowrap overflow-x-scroll mt-5 ">
+            {% for similar_cemetery in similar_cemeteries %}
+            <div class="col-12 col-sm-6 col-md-4 mb-5">
+                <div class="card text-center bg-card-service h-100 me-5" data-aos="flip-up">
+                    <a href="{% url 'cemetery_details' pk=similar_cemetery.pk %}" class="stretched-link">
+                        {% if similar_cemetery.image %}
+                        <div class="bg-image hover-overlay rounded-9" data-mdb-ripple-color="light">
+                            <img src="{{ similar_cemetery.image.url }}" alt="cemetery Image" class="img-fluid"/>
+                        </div>
+                        {% else %}
+                        <div class="bg-image hover-overlay rounded-9" data-mdb-ripple-color="light">
+                            <img src="{% static 'rememberApp/bg-img/bg_cemeteries3.png' %}" alt="cemetery Image"
+                                 class="img-fluid"/>
+                        </div>
+                        {% endif %}
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <a href="{% url 'cemetery_details' pk=similar_cemetery.pk %}" class="stretched-link">
+                                {% if LANGUAGE_CODE == 'en' %}
+                                {{ similar_cemetery.title_en|default_if_none:""|truncatechars:80 }}
+                                {% elif LANGUAGE_CODE == 'ru' %}
+                                {{ similar_cemetery.title_ru|default_if_none:""|truncatechars:80 }}
+                                {% else %}
+                                {{ similar_cemetery.title_uz|default_if_none:""|truncatechars:80 }}
+                                {% endif %}
+                            </a>
+                        </h5>
+                        <p class="card-text">
+                            {% if LANGUAGE_CODE == 'en' %}
+                            {{ similar_cemetery.description_en|default_if_none:""|safe|truncatechars:200 }}
+                            {% elif LANGUAGE_CODE == 'ru' %}
+                            {{ similar_cemetery.description_ru|default_if_none:""|safe|truncatechars:200 }}
+                            {% elif LANGUAGE_CODE == 'uz' %}
+                            {{ similar_cemetery.description_uz|default_if_none:""|safe|truncatechars:200 }}
+                            {% endif %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</section>
+<!-- ****** Blog Area End ******* -->
+{% endblock detail %}

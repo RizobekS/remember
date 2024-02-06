@@ -102,6 +102,18 @@ class Graveyard(models.Model):
                               validators=[FileExtensionValidator(allowed_extensions=['jpeg', 'png', 'jpg', 'webp'])],
                               null=True, blank=True, quality=65, force_format='JPEG')
 
+    english = models.BooleanField(blank=True, default=1)
+
+    russian = models.BooleanField(blank=True, default=1)
+
+    uzbek = models.BooleanField(blank=True, default=1)
+
+    def __str__(self):
+        return self.title_uz
+
+    def get_absolute_url(self):
+        return reverse('cemetery_detail', args=[str(self.pk)])
+
 
 class CalculateCost(models.Model):
     class Meta:
