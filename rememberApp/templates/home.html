@@ -49,11 +49,11 @@
                     <div>
                         <p>
                             {% if LANGUAGE_CODE == 'en' %}
-                            {{ info_about.about_en|safe|linebreaksbr }}
+                            {{ info_about.about_en|safe|truncatechars:1350 }}
                             {% elif LANGUAGE_CODE == 'uz' %}
-                            {{ info_about.about_uz|safe|linebreaksbr }}
+                            {{ info_about.about_uz|safe|truncatechars:1350 }}
                             {% elif LANGUAGE_CODE == 'ru' %}
-                            {{ info_about.about_ru|safe|linebreaksbr }}
+                            {{ info_about.about_ru|safe|truncatechars:1350 }}
                             {% endif %}
                         </p>
                     </div>
@@ -154,7 +154,7 @@
                 <div class="card h-100 bg-card-service" data-aos="flip-up">
                     <div class="card-body">
                         <div class=" mb-3 bg-warning col-3 rounded-circle d-flex justify-content-center align-items-center">
-                            <img src="{{ service.icon.url }}" alt="Service icon" width="90px">
+                            <img src="{{ service.icon.url }}" style="max-height:100px" alt="Service icon">
                         </div>
                         <h4 class="card-title mb-5">
                             {% if LANGUAGE_CODE == 'en' %}
