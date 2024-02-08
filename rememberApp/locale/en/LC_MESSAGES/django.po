@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-08 17:13+0500\n"
+"POT-Creation-Date: 2024-02-08 17:53+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -207,6 +207,18 @@ msgstr "Select a service"
 #: .\rememberApp\templates\home.html:278
 msgid "Соглашаюсь на публичную оферту"
 msgstr "I agree to the public offer"
+
+#: .\rememberApp\templates\gallery.html:32
+msgid "Вазы"
+msgstr "Vases"
+
+#: .\rememberApp\templates\gallery.html:43
+msgid "Облицовка"
+msgstr "Revetment"
+
+#: .\rememberApp\templates\gallery.html:55
+msgid "Памятники"
+msgstr "Monuments"
 
 #: .\rememberApp\templates\home.html:15
 msgid "Уборка могил на кладбищах в Узбекистане"
