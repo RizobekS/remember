@@ -1,5 +1,6 @@
 from django.core.mail import send_mail
 from django.core.validators import FileExtensionValidator
+from django.db.models import FileField
 from django.urls import reverse
 from django.utils import timezone
 from django_resized import ResizedImageField
@@ -204,3 +205,19 @@ class Contact(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Gallery(models.Model):
+    class Meta:
+        verbose_name = 'Gallery'
+        verbose_name_plural = 'Galleries'
+
+    title_en = RichTextUploadingField(max_length=255, null=True)
+    title_ru = RichTextUploadingField(max_length=255, null=True, blank=True)
+    title_uz = RichTextUploadingField(max_length=255, null=True, blank=True)
+    type = models.IntegerField(default=0, blank=False, )  # 0-JPIU, 1-Toshkent, 2-Djizzak
+    date = models.DateTimeField(auto_now=True, null=True)
+
+    image = ResizedImageField(upload_to='gallery/images/',
+                              validators=[FileExtensionValidator(allowed_extensions=['jpeg', 'png', 'jpg'])], null=True,
+                              blank=True, quality=65)

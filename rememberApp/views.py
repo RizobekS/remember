@@ -6,7 +6,7 @@ from django.shortcuts import render
 from django.utils.translation import gettext_lazy as _
 
 from rememberApp.forms import ContactForm, CalculateForm, FeedbackForm
-from rememberApp.models import AboutPage, Services, CalculateCost, Feedback, Graveyard
+from rememberApp.models import AboutPage, Services, CalculateCost, Feedback, Graveyard, Gallery
 
 
 def home(request):
@@ -155,3 +155,12 @@ def feedback(request):
     else:
         return render(request, "feedback.html",
                       {'services': list_services, 'approved_feedback': approved_feedback})
+
+
+def gallery(request):
+    context = {
+        'type_1': Gallery.objects.filter(type=0).order_by('-date'),
+        'type_2': Gallery.objects.filter(type=1).order_by('-date'),
+        'type_3': Gallery.objects.filter(type=2).order_by('-date'),
+    }
+    return render(request, 'gallery.html', context)

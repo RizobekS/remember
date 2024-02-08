@@ -32,6 +32,16 @@
     <link href="{% static '/rememberApp/css/mdb.min.css' %}" rel="stylesheet"/>
     <!-- AOS -->
 <!--    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">-->
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6D277SSEER"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-6D277SSEER');
+    </script>
 </head>
 <body>
 <!--Top header end-->
@@ -67,7 +77,7 @@
                         <a class="quick-link" href="{% url 'about' %}">{% trans 'О нас' %}</a>
                         <a class="quick-link" href="{% url 'services' %}">{% translate "Услуги" %}</a>
                         <a class="quick-link" href="{% url 'cemeteries' %}">{% translate "Кладбища" %}</a>
-                        <a class="quick-link" href="{% url 'home' %}">{% translate "Галерея" %}</a>
+                        <a class="quick-link" href="{% url 'gallery' %}">{% translate "Галерея" %}</a>
                         <a class="quick-link" href="{% url 'feedback' %}">{% translate "Отзывы" %}</a>
                         <a class="quick-link btn btn-success btn-rounded mb-1 " data-mdb-ripple-init href="{% url 'contact' %}" role="button" style="margin-top: 5px;">{% translate "Контакты" %}</a>
                     </div>
@@ -113,6 +123,7 @@
 <!--<script src="{% static '/jpiu_app/js/bootstrap.bundle.min.js' %}"></script>-->
 <!-- MDB -->
 <script type="text/javascript" src="{% static '/rememberApp/js/mdb.min.js' %}"></script>
+<script type="text/javascript" src="{% static '/rememberApp/js/mdb.umd.min.js' %}"></script>
 <script src="{% static '/rememberApp/js/button_top.js' %}"></script>
 <!--<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>-->
 <script>

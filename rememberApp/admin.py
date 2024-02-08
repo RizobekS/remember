@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import AboutPage, Services, Contact, CalculateCost, Feedback, Graveyard
+from .models import AboutPage, Services, Contact, CalculateCost, Feedback, Graveyard, Gallery
 
 
 class AboutPageAdmin(admin.ModelAdmin):
@@ -40,6 +40,11 @@ class ContactAdmin(admin.ModelAdmin):
     search_fields = ['name', 'phone', 'email', 'message']
 
 
+class GalleryAdmin(admin.ModelAdmin):
+    list_display = ['title_en', 'title_ru', 'title_uz', 'image', 'type', 'date']
+    search_fields = ['title_en', 'title_ru', 'title_uz']
+
+
 admin.site.site_header = "Remember Me"
 admin.site.register(AboutPage, AboutPageAdmin)
 admin.site.register(Services, ServicesAdmin)
@@ -47,3 +52,4 @@ admin.site.register(Graveyard, GraveyardAdmin)
 admin.site.register(CalculateCost, CalculateCostAdmin)
 admin.site.register(Feedback, FeedbackAdmin)
 admin.site.register(Contact, ContactAdmin)
+admin.site.register(Gallery, GalleryAdmin)

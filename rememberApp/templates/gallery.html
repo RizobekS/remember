@@ -1,0 +1,101 @@
+{% extends 'components/base.html' %}
+{% load static %}
+{% load humanize %}
+{% load i18n %}
+
+{% block title %}{% trans "Галерея"%}{% endblock title %}
+
+{% block content %}
+<div class="row-fluid mb-5">
+    <div class=" gradient-custom" style="height:300px;">
+        <div class="d-flex align-items-center justify-content-center mb-3 text-white h-100">
+            <div class="mb-auto p-2"></div>
+            <div class="p-2"><h1 class="mb-3">{% trans 'Галерея' %}</h1></div>
+        </div>
+    </div>
+
+</div>
+<section>
+    <div class="container">
+        <div class="mb-5">
+            <!-- Tabs navs -->
+            <ul class="nav nav-tabs nav-justified  mb-3" id="ex1" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <a
+                            data-mdb-tab-init
+                            class="nav-link active  bg-card-service"
+                            id="ex1-tab-1"
+                            href="#ex1-tabs-1"
+                            role="tab"
+                            aria-controls="ex1-tabs-1"
+                            aria-selected="true"
+                    >Tab 1</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a
+                            data-mdb-tab-init
+                            class="nav-link bg-card-service"
+                            id="ex1-tab-2"
+                            href="#ex1-tabs-2"
+                            role="tab"
+                            aria-controls="ex1-tabs-2"
+                            aria-selected="false"
+                    >Tab 2</a
+                    >
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a
+                            data-mdb-tab-init
+                            class="nav-link bg-card-service"
+                            id="ex1-tab-3"
+                            href="#ex1-tabs-3"
+                            role="tab"
+                            aria-controls="ex1-tabs-3"
+                            aria-selected="false"
+                    >Tab 3</a
+                    >
+                </li>
+            </ul>
+            <!-- Tabs navs -->
+
+            <!-- Tabs content -->
+            <div class="tab-content" id="ex1-content">
+                <div
+                        class="tab-pane fade show active"
+                        id="ex1-tabs-1"
+                        role="tabpanel"
+                        aria-labelledby="ex1-tab-1"
+                >
+                    {% for leak in type_1 %}
+                    <div class="d-flex border border-success justify-content-between rounded-9 col-12 col-sm-6 col-md-6 col-lg-4">
+                        <div class="row">
+                            <img src="{{ leak.image.url }}" class="w-100 rounded-9" alt="{{ leak.title_uz }}"/>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="tab-pane fade" id="ex1-tabs-2" role="tabpanel" aria-labelledby="ex1-tab-2">
+                    {% for revetment in type_2 %}
+                    <div class="d-flex border border-success justify-content-between rounded-9 col-12 col-sm-6 col-md-6 col-lg-4">
+                        <div class="row">
+                            <img src="{{ revetment.image.url }}" class="w-100 rounded-9" alt="{{ revetment.title_uz }}"/>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="tab-pane fade" id="ex1-tabs-3" role="tabpanel" aria-labelledby="ex1-tab-3">
+                    {% for monument in type_3 %}
+                    <div class="d-flex border border-success justify-content-between rounded-9 col-12 col-sm-6 col-md-6 col-lg-4">
+                        <div class="row">
+                            <img src="{{ monument.image.url }}" class="w-100 rounded-9" alt="{{ monument.title_uz }}"/>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <!-- Tabs content -->
+        </div>
+    </div>
+</section>
+
+{% endblock content %}
