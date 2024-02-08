@@ -209,8 +209,8 @@ class Contact(models.Model):
 
 class Gallery(models.Model):
     class Meta:
-        verbose_name = 'Gallery'
-        verbose_name_plural = 'Galleries'
+        verbose_name = _('Gallery')
+        verbose_name_plural = _('Galleries')
 
     title_en = RichTextUploadingField(max_length=255, null=True)
     title_ru = RichTextUploadingField(max_length=255, null=True, blank=True)

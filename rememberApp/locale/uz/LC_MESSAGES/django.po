@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-07 10:52+0500\n"
+"POT-Creation-Date: 2024-02-08 17:13+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,54 +18,62 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: .\rememberApp\models.py:16 .\rememberApp\models.py:17
+#: .\rememberApp\models.py:17 .\rememberApp\models.py:18
 msgid "About Us"
 msgstr "Biz haqimizda"
 
-#: .\rememberApp\models.py:41
+#: .\rememberApp\models.py:42
 msgid "Service"
 msgstr "Xiznat"
 
-#: .\rememberApp\models.py:42
+#: .\rememberApp\models.py:43
 msgid "Services"
 msgstr "Xizmatlar"
 
-#: .\rememberApp\models.py:88
+#: .\rememberApp\models.py:89
 msgid "Graveyard"
 msgstr "Qabriston"
 
-#: .\rememberApp\models.py:89
+#: .\rememberApp\models.py:90
 msgid "Graveyards"
 msgstr "Qabristonlar"
 
-#: .\rememberApp\models.py:120
+#: .\rememberApp\models.py:121
 msgid "Calculate cost"
 msgstr "Narxni xisoblash"
 
-#: .\rememberApp\models.py:121
+#: .\rememberApp\models.py:122
 msgid "Calculate costs"
 msgstr "Narxlarni xisoblash"
 
-#: .\rememberApp\models.py:151
+#: .\rememberApp\models.py:152
 msgid "Feedback"
 msgstr "Sharh"
 
-#: .\rememberApp\models.py:152
+#: .\rememberApp\models.py:153
 msgid "Feedbacks"
 msgstr "Sharhlar"
 
-#: .\rememberApp\models.py:182
+#: .\rememberApp\models.py:183
 msgid "Contact"
 msgstr "Aloqa"
 
-#: .\rememberApp\models.py:183
+#: .\rememberApp\models.py:184
 msgid "Contacts"
 msgstr "Aloqalar"
+
+#: .\rememberApp\models.py:212
+msgid "Gallery"
+msgstr "Galereya"
+
+#: .\rememberApp\models.py:213
+msgid "Galleries"
+msgstr "Galereya"
 
 #: .\rememberApp\templates\about_us.html:5
 #: .\rememberApp\templates\about_us.html:13
 #: .\rememberApp\templates\components\_footer.html:55
-#: .\rememberApp\templates\components\base.html:67
+#: .\rememberApp\templates\components\base.html:77
 #: .\rememberApp\templates\home.html:47
 msgid "О нас"
 msgstr "Biz haqimizda"
@@ -73,7 +81,7 @@ msgstr "Biz haqimizda"
 #: .\rememberApp\templates\cemeteries.html:6
 #: .\rememberApp\templates\cemeteries.html:13
 #: .\rememberApp\templates\components\_footer.html:61
-#: .\rememberApp\templates\components\base.html:69
+#: .\rememberApp\templates\components\base.html:79
 msgid "Кладбища"
 msgstr "Qabristonlar"
 
@@ -86,7 +94,7 @@ msgid "Ссылки"
 msgstr "Havolalar"
 
 #: .\rememberApp\templates\components\_footer.html:58
-#: .\rememberApp\templates\components\base.html:68
+#: .\rememberApp\templates\components\base.html:78
 #: .\rememberApp\templates\home.html:150 .\rememberApp\templates\home.html:308
 #: .\rememberApp\templates\home.html:310 .\rememberApp\templates\home.html:312
 #: .\rememberApp\templates\services.html:5
@@ -95,12 +103,14 @@ msgid "Услуги"
 msgstr "Xizmatlar"
 
 #: .\rememberApp\templates\components\_footer.html:64
-#: .\rememberApp\templates\components\base.html:70
+#: .\rememberApp\templates\components\base.html:80
+#: .\rememberApp\templates\gallery.html:6
+#: .\rememberApp\templates\gallery.html:13
 msgid "Галерея"
 msgstr "Galereya"
 
 #: .\rememberApp\templates\components\_footer.html:67
-#: .\rememberApp\templates\components\base.html:71
+#: .\rememberApp\templates\components\base.html:81
 #: .\rememberApp\templates\feedback.html:4
 #: .\rememberApp\templates\feedback.html:11
 #: .\rememberApp\templates\home.html:298
@@ -109,7 +119,7 @@ msgstr "Sharhlar"
 
 #: .\rememberApp\templates\components\_footer.html:70
 #: .\rememberApp\templates\components\_footer.html:81
-#: .\rememberApp\templates\components\base.html:72
+#: .\rememberApp\templates\components\base.html:82
 #: .\rememberApp\templates\contact.html:4
 #: .\rememberApp\templates\contact.html:22
 msgid "Контакты"
@@ -253,8 +263,8 @@ msgid ""
 "Первое городское кладбище, более известное как кладбище по улице Боткина или "
 "Боткинское кладбище"
 msgstr ""
-"Botkin ko'chasidagi qabriston deb nomlanuvchi birinchi shahar qabristoni yoki "
-"Botkin qabristoni"
+"Botkin ko'chasidagi qabriston deb nomlanuvchi birinchi shahar qabristoni "
+"yoki Botkin qabristoni"
 
 #: .\rememberApp\templates\home.html:124
 msgid "Чигатайское кладбище"
@@ -266,8 +276,9 @@ msgid ""
 "есть с элементами, присущими европейским кладбищам — наличие скульптурных "
 "надгробий"
 msgstr ""
-"Chig‘atoy qabristoni musulmon, o‘zbek qabristoni yangi tipdagi, ya‘ni "
-"Evropa qabristonlariga xos elementlar mavjud - haykaltaroshlik qabr toshlari mavjudligi"
+"Chig‘atoy qabristoni musulmon, o‘zbek qabristoni yangi tipdagi, ya‘ni Evropa "
+"qabristonlariga xos elementlar mavjud - haykaltaroshlik qabr toshlari "
+"mavjudligi"
 
 #: .\rememberApp\templates\home.html:191
 msgid "Расчет стоимости"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-24 18:24+0500\n"
+"POT-Creation-Date: 2024-02-08 17:13+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,56 +20,75 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: .\rememberApp\models.py:16 .\rememberApp\models.py:17
+#: .\rememberApp\models.py:17 .\rememberApp\models.py:18
 msgid "About Us"
 msgstr "О нас"
 
-#: .\rememberApp\models.py:41
+#: .\rememberApp\models.py:42
 msgid "Service"
 msgstr "Услуга"
 
-#: .\rememberApp\models.py:42
+#: .\rememberApp\models.py:43
 msgid "Services"
 msgstr "Услуги"
 
-#: .\rememberApp\models.py:88
+#: .\rememberApp\models.py:89
 msgid "Graveyard"
 msgstr "Кладбище"
 
-#: .\rememberApp\models.py:89
+#: .\rememberApp\models.py:90
 msgid "Graveyards"
 msgstr "Кладбища"
 
-#: .\rememberApp\models.py:108
+#: .\rememberApp\models.py:121
 msgid "Calculate cost"
 msgstr "Расчет стоимости"
 
-#: .\rememberApp\models.py:109
+#: .\rememberApp\models.py:122
 msgid "Calculate costs"
 msgstr "Расчет стоимости"
 
-#: .\rememberApp\models.py:139
+#: .\rememberApp\models.py:152
 msgid "Feedback"
 msgstr "Отзыв"
 
-#: .\rememberApp\models.py:140
+#: .\rememberApp\models.py:153
 msgid "Feedbacks"
 msgstr "Отзывы"
 
-#: .\rememberApp\models.py:170
+#: .\rememberApp\models.py:183
 msgid "Contact"
 msgstr "Контакт"
 
-#: .\rememberApp\models.py:171
+#: .\rememberApp\models.py:184
 msgid "Contacts"
 msgstr "Контакты"
+
+#: .\rememberApp\models.py:212
+msgid "Gallery"
+msgstr "Галерея"
+
+#: .\rememberApp\models.py:213
+msgid "Galleries"
+msgstr "Галерея"
 
 #: .\rememberApp\templates\about_us.html:5
 #: .\rememberApp\templates\about_us.html:13
 #: .\rememberApp\templates\components\_footer.html:55
-#: .\rememberApp\templates\components\base.html:67
-#: .\rememberApp\templates\home.html:46
+#: .\rememberApp\templates\components\base.html:77
+#: .\rememberApp\templates\home.html:47
 msgid "О нас"
+msgstr ""
+
+#: .\rememberApp\templates\cemeteries.html:6
+#: .\rememberApp\templates\cemeteries.html:13
+#: .\rememberApp\templates\components\_footer.html:61
+#: .\rememberApp\templates\components\base.html:79
+msgid "Кладбища"
+msgstr ""
+
+#: .\rememberApp\templates\cemetery-details.html:113
+msgid "Другие кладбища"
 msgstr ""
 
 #: .\rememberApp\templates\components\_footer.html:50
@@ -77,35 +96,32 @@ msgid "Ссылки"
 msgstr ""
 
 #: .\rememberApp\templates\components\_footer.html:58
-#: .\rememberApp\templates\components\base.html:68
-#: .\rememberApp\templates\home.html:143 .\rememberApp\templates\home.html:298
-#: .\rememberApp\templates\home.html:300 .\rememberApp\templates\home.html:302
+#: .\rememberApp\templates\components\base.html:78
+#: .\rememberApp\templates\home.html:150 .\rememberApp\templates\home.html:308
+#: .\rememberApp\templates\home.html:310 .\rememberApp\templates\home.html:312
 #: .\rememberApp\templates\services.html:5
 #: .\rememberApp\templates\services.html:13
 msgid "Услуги"
 msgstr ""
 
-#: .\rememberApp\templates\components\_footer.html:61
-#: .\rememberApp\templates\components\base.html:69
-msgid "Кладбища"
-msgstr ""
-
 #: .\rememberApp\templates\components\_footer.html:64
-#: .\rememberApp\templates\components\base.html:70
+#: .\rememberApp\templates\components\base.html:80
+#: .\rememberApp\templates\gallery.html:6
+#: .\rememberApp\templates\gallery.html:13
 msgid "Галерея"
 msgstr ""
 
 #: .\rememberApp\templates\components\_footer.html:67
-#: .\rememberApp\templates\components\base.html:71
+#: .\rememberApp\templates\components\base.html:81
 #: .\rememberApp\templates\feedback.html:4
 #: .\rememberApp\templates\feedback.html:11
-#: .\rememberApp\templates\home.html:288
+#: .\rememberApp\templates\home.html:298
 msgid "Отзывы"
 msgstr ""
 
 #: .\rememberApp\templates\components\_footer.html:70
 #: .\rememberApp\templates\components\_footer.html:81
-#: .\rememberApp\templates\components\base.html:72
+#: .\rememberApp\templates\components\base.html:82
 #: .\rememberApp\templates\contact.html:4
 #: .\rememberApp\templates\contact.html:22
 msgid "Контакты"
@@ -128,13 +144,13 @@ msgstr ""
 
 #: .\rememberApp\templates\contact.html:36
 #: .\rememberApp\templates\feedback.html:29
-#: .\rememberApp\templates\home.html:189
+#: .\rememberApp\templates\home.html:199
 msgid "большое спасибо за ваше сообщение! Мы свяжемся с Вами в скором времени!"
 msgstr ""
 
 #: .\rememberApp\templates\contact.html:42
 #: .\rememberApp\templates\feedback.html:35
-#: .\rememberApp\templates\home.html:196
+#: .\rememberApp\templates\home.html:206
 msgid "Упс, что-то пошло не так!"
 msgstr ""
 
@@ -145,7 +161,7 @@ msgstr ""
 #: .\rememberApp\templates\contact.html:69
 #: .\rememberApp\templates\contact.html:97
 #: .\rememberApp\templates\feedback.html:67
-#: .\rememberApp\templates\home.html:232
+#: .\rememberApp\templates\home.html:242
 msgid "Телефон"
 msgstr ""
 
@@ -159,7 +175,7 @@ msgstr ""
 
 #: .\rememberApp\templates\contact.html:91
 #: .\rememberApp\templates\feedback.html:52
-#: .\rememberApp\templates\home.html:215
+#: .\rememberApp\templates\home.html:225
 msgid "Имя"
 msgstr ""
 
@@ -169,28 +185,28 @@ msgstr ""
 
 #: .\rememberApp\templates\contact.html:110
 #: .\rememberApp\templates\feedback.html:95
-#: .\rememberApp\templates\home.html:262
+#: .\rememberApp\templates\home.html:272
 msgid "Сообщение"
 msgstr ""
 
 #: .\rememberApp\templates\contact.html:115
 #: .\rememberApp\templates\feedback.html:104
-#: .\rememberApp\templates\home.html:272
+#: .\rememberApp\templates\home.html:282
 msgid "Отправить"
 msgstr ""
 
 #: .\rememberApp\templates\feedback.html:59
-#: .\rememberApp\templates\home.html:223
+#: .\rememberApp\templates\home.html:233
 msgid "Почта"
 msgstr ""
 
 #: .\rememberApp\templates\feedback.html:75
-#: .\rememberApp\templates\home.html:241
+#: .\rememberApp\templates\home.html:251
 msgid "Выбрать услугу"
 msgstr ""
 
 #: .\rememberApp\templates\feedback.html:100
-#: .\rememberApp\templates\home.html:268
+#: .\rememberApp\templates\home.html:278
 msgid "Соглашаюсь на публичную оферту"
 msgstr ""
 
@@ -208,23 +224,63 @@ msgstr ""
 msgid "Расчёт стоимости"
 msgstr ""
 
-#: .\rememberApp\templates\home.html:60 .\rememberApp\templates\home.html:164
+#: .\rememberApp\templates\home.html:61 .\rememberApp\templates\home.html:171
 #: .\rememberApp\templates\services.html:41
 msgid "Подробнее"
 msgstr ""
 
-#: .\rememberApp\templates\home.html:73
+#: .\rememberApp\templates\home.html:74
 msgid "Поиск кладбищ по всему Узбекистану"
 msgstr ""
 
-#: .\rememberApp\templates\home.html:76
+#: .\rememberApp\templates\home.html:77
 msgid "Список и дополнительные сведения"
 msgstr ""
 
-#: .\rememberApp\views.py:33 .\rememberApp\views.py:118
+#: .\rememberApp\templates\home.html:108
+msgid "Домбрабатское кладбище"
+msgstr ""
+
+#: .\rememberApp\templates\home.html:109
+msgid ""
+"На кладбище имеются участки для иудейских, мусульманских и других "
+"конфессиональных захоронений"
+msgstr ""
+
+#: .\rememberApp\templates\home.html:110 .\rememberApp\templates\home.html:118
+#: .\rememberApp\templates\home.html:126
+msgid "Больше"
+msgstr ""
+
+#: .\rememberApp\templates\home.html:116
+msgid "Боткинское кладбище"
+msgstr ""
+
+#: .\rememberApp\templates\home.html:117
+msgid ""
+"Первое городское кладбище, более известное как кладбище по улице Боткина или "
+"Боткинское кладбище"
+msgstr ""
+
+#: .\rememberApp\templates\home.html:124
+msgid "Чигатайское кладбище"
+msgstr ""
+
+#: .\rememberApp\templates\home.html:125
+msgid ""
+"Чигатаайское кладбище — мусульманское, узбекское кладбище нового типа, то "
+"есть с элементами, присущими европейским кладбищам — наличие скульптурных "
+"надгробий"
+msgstr ""
+
+#: .\rememberApp\templates\home.html:191
+msgid "Расчет стоимости"
+msgstr ""
+
+#: .\rememberApp\views.py:33 .\rememberApp\views.py:152
 msgid "Ooops something went wrong!"
 msgstr "Упс, что-то пошло не так!"
 
-#: .\rememberApp\views.py:94
+#: .\rememberApp\views.py:128
 msgid "Ooops, something went wrong!"
 msgstr "Упс, что-то пошло не так!"

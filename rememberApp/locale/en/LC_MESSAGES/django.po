@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-07 10:52+0500\n"
+"POT-Creation-Date: 2024-02-08 17:13+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,54 +18,62 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\rememberApp\models.py:16 .\rememberApp\models.py:17
+#: .\rememberApp\models.py:17 .\rememberApp\models.py:18
 msgid "About Us"
 msgstr ""
 
-#: .\rememberApp\models.py:41
+#: .\rememberApp\models.py:42
 msgid "Service"
 msgstr ""
 
-#: .\rememberApp\models.py:42
+#: .\rememberApp\models.py:43
 msgid "Services"
 msgstr ""
 
-#: .\rememberApp\models.py:88
+#: .\rememberApp\models.py:89
 msgid "Graveyard"
 msgstr ""
 
-#: .\rememberApp\models.py:89
+#: .\rememberApp\models.py:90
 msgid "Graveyards"
 msgstr ""
 
-#: .\rememberApp\models.py:120
+#: .\rememberApp\models.py:121
 msgid "Calculate cost"
 msgstr ""
 
-#: .\rememberApp\models.py:121
+#: .\rememberApp\models.py:122
 msgid "Calculate costs"
 msgstr ""
 
-#: .\rememberApp\models.py:151
+#: .\rememberApp\models.py:152
 msgid "Feedback"
 msgstr ""
 
-#: .\rememberApp\models.py:152
+#: .\rememberApp\models.py:153
 msgid "Feedbacks"
 msgstr ""
 
-#: .\rememberApp\models.py:182
+#: .\rememberApp\models.py:183
 msgid "Contact"
 msgstr ""
 
-#: .\rememberApp\models.py:183
+#: .\rememberApp\models.py:184
 msgid "Contacts"
+msgstr ""
+
+#: .\rememberApp\models.py:212
+msgid "Gallery"
+msgstr ""
+
+#: .\rememberApp\models.py:213
+msgid "Galleries"
 msgstr ""
 
 #: .\rememberApp\templates\about_us.html:5
 #: .\rememberApp\templates\about_us.html:13
 #: .\rememberApp\templates\components\_footer.html:55
-#: .\rememberApp\templates\components\base.html:67
+#: .\rememberApp\templates\components\base.html:77
 #: .\rememberApp\templates\home.html:47
 msgid "О нас"
 msgstr "About Us"
@@ -73,7 +81,7 @@ msgstr "About Us"
 #: .\rememberApp\templates\cemeteries.html:6
 #: .\rememberApp\templates\cemeteries.html:13
 #: .\rememberApp\templates\components\_footer.html:61
-#: .\rememberApp\templates\components\base.html:69
+#: .\rememberApp\templates\components\base.html:79
 msgid "Кладбища"
 msgstr "Cemeteries"
 
@@ -86,7 +94,7 @@ msgid "Ссылки"
 msgstr "Links"
 
 #: .\rememberApp\templates\components\_footer.html:58
-#: .\rememberApp\templates\components\base.html:68
+#: .\rememberApp\templates\components\base.html:78
 #: .\rememberApp\templates\home.html:150 .\rememberApp\templates\home.html:308
 #: .\rememberApp\templates\home.html:310 .\rememberApp\templates\home.html:312
 #: .\rememberApp\templates\services.html:5
@@ -95,12 +103,14 @@ msgid "Услуги"
 msgstr "Services"
 
 #: .\rememberApp\templates\components\_footer.html:64
-#: .\rememberApp\templates\components\base.html:70
+#: .\rememberApp\templates\components\base.html:80
+#: .\rememberApp\templates\gallery.html:6
+#: .\rememberApp\templates\gallery.html:13
 msgid "Галерея"
 msgstr "Gallery"
 
 #: .\rememberApp\templates\components\_footer.html:67
-#: .\rememberApp\templates\components\base.html:71
+#: .\rememberApp\templates\components\base.html:81
 #: .\rememberApp\templates\feedback.html:4
 #: .\rememberApp\templates\feedback.html:11
 #: .\rememberApp\templates\home.html:298
@@ -109,7 +119,7 @@ msgstr "Feedbacks"
 
 #: .\rememberApp\templates\components\_footer.html:70
 #: .\rememberApp\templates\components\_footer.html:81
-#: .\rememberApp\templates\components\base.html:72
+#: .\rememberApp\templates\components\base.html:82
 #: .\rememberApp\templates\contact.html:4
 #: .\rememberApp\templates\contact.html:22
 msgid "Контакты"
@@ -236,8 +246,7 @@ msgid ""
 "На кладбище имеются участки для иудейских, мусульманских и других "
 "конфессиональных захоронений"
 msgstr ""
-"The cemetery has areas for Jewish, Muslim and other "
-"confessional burials"
+"The cemetery has areas for Jewish, Muslim and other confessional burials"
 
 #: .\rememberApp\templates\home.html:110 .\rememberApp\templates\home.html:118
 #: .\rememberApp\templates\home.html:126
@@ -266,8 +275,9 @@ msgid ""
 "есть с элементами, присущими европейским кладбищам — наличие скульптурных "
 "надгробий"
 msgstr ""
-"The Chigataay cemetery is a Muslim, Uzbek cemetery of a new type, with elements inherent in "
-"European cemeteries - the presence of sculptural tombstones"
+"The Chigataay cemetery is a Muslim, Uzbek cemetery of a new type, with "
+"elements inherent in European cemeteries - the presence of sculptural "
+"tombstones"
 
 #: .\rememberApp\templates\home.html:191
 msgid "Расчет стоимости"
