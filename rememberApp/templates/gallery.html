@@ -66,31 +66,40 @@
                         role="tabpanel"
                         aria-labelledby="ex1-tab-1"
                 >
-                    {% for leak in type_1 %}
-                    <div class="d-flex border border-success justify-content-between rounded-9 col-12 col-sm-6 col-md-6 col-lg-4">
-                        <div class="row">
-                            <img src="{{ leak.image.url }}" class="w-100 rounded-9" alt="{{ leak.title_uz }}"/>
+                    <div class="row d-flex justify-content-around">
+                        {% for leak in type_1 %}
+                        <div class="mb-4 rounded-9 col-12 col-sm-6 col-md-6 col-lg-4">
+                            <div class="">
+                                <img src="{{ leak.image.url }}" class="img-fluid w-100 rounded-9"
+                                     alt="{{ leak.title_uz }}"/>
+                            </div>
                         </div>
+                        {% endfor %}
                     </div>
-                    {% endfor %}
                 </div>
                 <div class="tab-pane fade" id="ex1-tabs-2" role="tabpanel" aria-labelledby="ex1-tab-2">
-                    {% for revetment in type_2 %}
-                    <div class="d-flex border border-success justify-content-between rounded-9 col-12 col-sm-6 col-md-6 col-lg-4">
-                        <div class="row">
-                            <img src="{{ revetment.image.url }}" class="w-100 rounded-9" alt="{{ revetment.title_uz }}"/>
+                    <div class="row d-flex justify-content-around">
+                        {% for revetment in type_2 %}
+                        <div class="mb-4 rounded-9 col-12 col-sm-6 col-md-6 col-lg-4">
+                            <div class="row">
+                                <img src="{{ revetment.image.url }}" class="img-fluid w-100 rounded-9"
+                                     alt="{{ revetment.title_uz }}"/>
+                            </div>
                         </div>
+                        {% endfor %}
                     </div>
-                    {% endfor %}
                 </div>
                 <div class="tab-pane fade" id="ex1-tabs-3" role="tabpanel" aria-labelledby="ex1-tab-3">
-                    {% for monument in type_3 %}
-                    <div class="d-flex border border-success justify-content-between rounded-9 col-12 col-sm-6 col-md-6 col-lg-4">
-                        <div class="row">
-                            <img src="{{ monument.image.url }}" class="w-100 rounded-9" alt="{{ monument.title_uz }}"/>
+                    <div class="row d-flex justify-content-around">
+                        {% for monument in type_3 %}
+                        <div class="mb-4 rounded-9 col-12 col-sm-6 col-md-6 col-lg-4">
+                            <div class="row">
+                                <img src="{{ monument.image.url }}" class="img-fluid w-100 rounded-9"
+                                     alt="{{ monument.title_uz }}"/>
+                            </div>
                         </div>
+                        {% endfor %}
                     </div>
-                    {% endfor %}
                 </div>
             </div>
             <!-- Tabs content -->
