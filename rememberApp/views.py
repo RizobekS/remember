@@ -215,13 +215,13 @@ def gallery(request):
 
 
 @login_required(login_url='/login/')
-def click_generate_url(request, amount, tour_id):
+def click_generate_url(request, amount, service_id):
     price = amount * 1
 
     transaction_id = initalize_transaction_click(
         request.user,
         price,
-        tour_id
+        service_id
     )
 
     generated_link = ClickUz.generate_url(
@@ -235,7 +235,7 @@ def click_generate_url(request, amount, tour_id):
 @login_required(login_url='/login/')
 def payme_generate_url(request):
     amount = request.GET.get('amount')
-    tour_id = request.GET.get('tour_id')
+    service_id = request.GET.get('service_id')
     res = float(amount) * float(100)
     price = Decimal(str(res))
     print(price)
@@ -243,7 +243,7 @@ def payme_generate_url(request):
     transaction_id = initalize_transaction_payme(
         request.user,
         amount,
-        tour_id
+        service_id
     )
 
     generated_link = Paycom().create_initialization(
