@@ -22,7 +22,7 @@ class Transaction(models.Model):
     is_verified = models.BooleanField(default=False)
     is_paid = models.BooleanField(default=False)
     is_canceled = models.BooleanField(default=False)
-    owner = models.ForeignKey(User, on_delete=models.PROTECT, related_name='transactions')
+    owner = models.ForeignKey(User, on_delete=models.PROTECT, related_name='transactions', null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     transaction_type = models.CharField(max_length=10, choices=TRANSACTIONTYPECHOICES.choices)
     status = models.CharField(max_length=10, choices=TRANSACTIONSTATUS.choices, default=TRANSACTIONSTATUS.NEW)

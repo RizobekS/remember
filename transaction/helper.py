@@ -27,10 +27,10 @@ class CheckPayMeTransaction(Paycom):
         transaction = Transaction.objects.get(id=int(transaction.order_key))
         transaction.make_payment()
         payment_type = transaction.transaction_type
-        tour_id = transaction.tour.id
+        service_id = transaction.service.id
         user = transaction.owner
 
-        return views.payment_success(self, payment_type, tour_id, user)
+        return views.payment_success(self, payment_type, service_id, user)
 
     def cancel_payment(self, account, transaction, *args, **kwargs):
         service.cancel_transaction(transaction.order_key)
@@ -52,7 +52,7 @@ class CheckClickTransaction(ClickUz):
             transaction = Transaction.objects.get(id=int(order_id))
             transaction.make_payment()
             payment_type = transaction.transaction_type
-            tour_id = transaction.tour.id
+            tour_id = transaction.service.id
             user = transaction.owner
 
             return views.payment_success(self, payment_type, tour_id, user)

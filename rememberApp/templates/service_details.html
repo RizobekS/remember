@@ -155,13 +155,15 @@
                             </div>
                         </div>
                     </div>
-                    <h2>{{ detail.value|floatformat:0|intcomma }} UZS</h2>
-                    <div class="d-flex justify-content-center mt-3 mb-5">
-                        <div class="order col-6 col-md-4 col-lg-2">
-                            <a data-mdb-toggle="modal" data-mdb-target="#exampleModal" class="bg-info btn" id="order">
+                    {% if detail.value %}
+                    <div class="d-flex justify-content-center align-items-end mt-3 mb-5">
+                        <div class=" col-6 col-md-4 col-lg-2">
+                            <h4 class="">{{ detail.value|floatformat:0|intcomma }} UZS</h4>
+                            <a data-mdb-toggle="modal" data-mdb-target="#exampleModal" class="btn btn-success" id="order">
                                 {%translate 'Купить' %}</a>
                         </div>
                     </div>
+                    {% endif %}
                 </div>
                 <!-- Blog Details Area End -->
             </div>

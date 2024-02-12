@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     "rememberApp",
     "ckeditor",
     "ckeditor_uploader",
+    "clickuz",
+    "paycomuz",
+    "transaction",
 ]
 
 MIDDLEWARE = [
@@ -54,6 +57,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+AUTH_USER_MODEL = 'rememberApp.User'
 ROOT_URLCONF = 'remember_project.urls'
 
 TEMPLATES = [
@@ -229,3 +233,23 @@ DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+PAYME_PRICE_HELPER = 100
+CLICK_PRICE_HELPER = 1
+
+PAYCOM_SETTINGS = {
+    "TOKEN": "1",  # token
+    "KASSA_ID": "1",  # kassa id
+    "SECRET_KEY": "1",  # production key
+    "ACCOUNTS": {
+        "KEY": "order_id"
+    }
+}
+
+CLICK_SETTINGS = {
+    "service_id": '25924',
+    "merchant_id": '18255',
+    "merchant_user_id": '29427',
+    "secret_key": 'cPtf2aPjIigR',
+}
+

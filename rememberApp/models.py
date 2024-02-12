@@ -91,6 +91,8 @@ class Services(models.Model):
     description_en = RichTextUploadingField(null=True, blank=True)
     description_ru = RichTextUploadingField(null=True, blank=True)
     description_uz = RichTextUploadingField(null=True)
+    value = models.DecimalField(max_digits=20, decimal_places=3, null=True, blank=True,
+                                validators=[MinValueValidator(1), MaxValueValidator(999999999)])
 
     date = models.DateField(auto_now=True, null=True)
 
@@ -124,20 +126,6 @@ class Services(models.Model):
 
     def get_absolute_url(self):
         return reverse('tender_detail', args=[str(self.pk)])
-
-
-class Prices(models.Model):
-    class Meta:
-        verbose_name = _('Price')
-        verbose_name_plural = _('Prices')
-
-    services = models.ForeignKey(Services, null=True, on_delete=models.SET_NULL)
-    value = models.DecimalField(max_digits=20, decimal_places=3, null=True, blank=True,
-                                validators=[MinValueValidator(1), MaxValueValidator(999999999)])
-    date = models.DateTimeField(auto_now=True, null=True)
-
-    def __str__(self):
-        return self.services.title_uz
 
 
 class Graveyard(models.Model):

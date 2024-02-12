@@ -1,10 +1,8 @@
-from abc import ABC
-
 from rest_framework import serializers
 from transaction.models import TRANSACTIONTYPECHOICES, Transaction
 
 
-class InitializePaymentSerializer(serializers.Serializer, ABC):
+class InitializePaymentSerializer(serializers.Serializer):
     transaction_type = serializers.ChoiceField(
         choices=TRANSACTIONTYPECHOICES.choices,
     )
