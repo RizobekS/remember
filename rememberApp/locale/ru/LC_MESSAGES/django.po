@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-02-08 17:53+0500\n"
+"POT-Creation-Date: 2024-02-12 11:25+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,62 +20,115 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: .\rememberApp\models.py:17 .\rememberApp\models.py:18
+#: .\rememberApp\forms.py:40 .\rememberApp\templates\contact.html:91
+#: .\rememberApp\templates\feedback.html:52
+#: .\rememberApp\templates\home.html:225
+#: .\rememberApp\templates\registration\register.html:147
+#: .\rememberApp\templates\registration\register.html:148
+msgid "Имя"
+msgstr ""
+
+#: .\rememberApp\forms.py:41
+#: .\rememberApp\templates\registration\register.html:151
+#: .\rememberApp\templates\registration\register.html:152
+msgid "Фамилия"
+msgstr ""
+
+#: .\rememberApp\forms.py:42 .\rememberApp\templates\contact.html:69
+#: .\rememberApp\templates\contact.html:97
+#: .\rememberApp\templates\feedback.html:67
+#: .\rememberApp\templates\home.html:242
+#: .\rememberApp\templates\registration\login.html:146
+#: .\rememberApp\templates\registration\register.html:155
+msgid "Телефон"
+msgstr ""
+
+#: .\rememberApp\forms.py:43 .\rememberApp\templates\contact.html:103
+#: .\rememberApp\templates\registration\register.html:159
+#: .\rememberApp\templates\registration\register.html:160
+msgid "Ваша электронная почта"
+msgstr ""
+
+#: .\rememberApp\forms.py:44
+#: .\rememberApp\templates\registration\register.html:163
+#: .\rememberApp\templates\registration\register.html:164
+msgid "Новый пароль"
+msgstr ""
+
+#: .\rememberApp\forms.py:45
+#: .\rememberApp\templates\registration\register.html:167
+#: .\rememberApp\templates\registration\register.html:168
+msgid "Повторите пароль"
+msgstr ""
+
+#: .\rememberApp\models.py:19
+msgid "Нужно ввести телефон номер!"
+msgstr ""
+
+#: .\rememberApp\models.py:59 .\rememberApp\models.py:60
 msgid "About Us"
 msgstr "О нас"
 
-#: .\rememberApp\models.py:42
+#: .\rememberApp\models.py:84
 msgid "Service"
 msgstr "Услуга"
 
-#: .\rememberApp\models.py:43
+#: .\rememberApp\models.py:85
 msgid "Services"
 msgstr "Услуги"
 
-#: .\rememberApp\models.py:89
+#: .\rememberApp\models.py:131
+msgid "Price"
+msgstr "Ценв"
+
+#: .\rememberApp\models.py:132
+msgid "Prices"
+msgstr "Цены"
+
+#: .\rememberApp\models.py:145
 msgid "Graveyard"
 msgstr "Кладбище"
 
-#: .\rememberApp\models.py:90
+#: .\rememberApp\models.py:146
 msgid "Graveyards"
 msgstr "Кладбища"
 
-#: .\rememberApp\models.py:121
+#: .\rememberApp\models.py:177
 msgid "Calculate cost"
 msgstr "Расчет стоимости"
 
-#: .\rememberApp\models.py:122
+#: .\rememberApp\models.py:178
 msgid "Calculate costs"
 msgstr "Расчет стоимости"
 
-#: .\rememberApp\models.py:152
+#: .\rememberApp\models.py:208
 msgid "Feedback"
 msgstr "Отзыв"
 
-#: .\rememberApp\models.py:153
+#: .\rememberApp\models.py:209
 msgid "Feedbacks"
 msgstr "Отзывы"
 
-#: .\rememberApp\models.py:183
+#: .\rememberApp\models.py:239
 msgid "Contact"
 msgstr "Контакт"
 
-#: .\rememberApp\models.py:184
+#: .\rememberApp\models.py:240
 msgid "Contacts"
 msgstr "Контакты"
 
-#: .\rememberApp\models.py:212
+#: .\rememberApp\models.py:268
 msgid "Gallery"
 msgstr "Галерея"
 
-#: .\rememberApp\models.py:213
+#: .\rememberApp\models.py:269
 msgid "Galleries"
 msgstr "Галерея"
 
 #: .\rememberApp\templates\about_us.html:5
 #: .\rememberApp\templates\about_us.html:13
 #: .\rememberApp\templates\components\_footer.html:55
-#: .\rememberApp\templates\components\base.html:77
+#: .\rememberApp\templates\components\base.html:78
 #: .\rememberApp\templates\home.html:47
 msgid "О нас"
 msgstr ""
@@ -83,7 +136,7 @@ msgstr ""
 #: .\rememberApp\templates\cemeteries.html:6
 #: .\rememberApp\templates\cemeteries.html:13
 #: .\rememberApp\templates\components\_footer.html:61
-#: .\rememberApp\templates\components\base.html:79
+#: .\rememberApp\templates\components\base.html:80
 msgid "Кладбища"
 msgstr ""
 
@@ -96,23 +149,23 @@ msgid "Ссылки"
 msgstr ""
 
 #: .\rememberApp\templates\components\_footer.html:58
-#: .\rememberApp\templates\components\base.html:78
+#: .\rememberApp\templates\components\base.html:79
 #: .\rememberApp\templates\home.html:150 .\rememberApp\templates\home.html:308
 #: .\rememberApp\templates\home.html:310 .\rememberApp\templates\home.html:312
-#: .\rememberApp\templates\services.html:5
-#: .\rememberApp\templates\services.html:13
+#: .\rememberApp\templates\services.html:6
+#: .\rememberApp\templates\services.html:14
 msgid "Услуги"
 msgstr ""
 
 #: .\rememberApp\templates\components\_footer.html:64
-#: .\rememberApp\templates\components\base.html:80
+#: .\rememberApp\templates\components\base.html:81
 #: .\rememberApp\templates\gallery.html:6
 #: .\rememberApp\templates\gallery.html:13
 msgid "Галерея"
 msgstr ""
 
 #: .\rememberApp\templates\components\_footer.html:67
-#: .\rememberApp\templates\components\base.html:81
+#: .\rememberApp\templates\components\base.html:82
 #: .\rememberApp\templates\feedback.html:4
 #: .\rememberApp\templates\feedback.html:11
 #: .\rememberApp\templates\home.html:298
@@ -121,7 +174,7 @@ msgstr ""
 
 #: .\rememberApp\templates\components\_footer.html:70
 #: .\rememberApp\templates\components\_footer.html:81
-#: .\rememberApp\templates\components\base.html:82
+#: .\rememberApp\templates\components\base.html:83
 #: .\rememberApp\templates\contact.html:4
 #: .\rememberApp\templates\contact.html:22
 msgid "Контакты"
@@ -136,10 +189,27 @@ msgstr ""
 msgid "При использовании информации сайта ссылка на источник обязательна"
 msgstr ""
 
-#: .\rememberApp\templates\components\base.html:12
 #: .\rememberApp\templates\components\base.html:14
 #: .\rememberApp\templates\components\base.html:16
+#: .\rememberApp\templates\registration\login.html:14
+#: .\rememberApp\templates\registration\login.html:16
+#: .\rememberApp\templates\registration\register.html:14
+#: .\rememberApp\templates\registration\register.html:16
 msgid "Помни меня"
+msgstr ""
+
+#: .\rememberApp\templates\components\base.html:110
+msgid "Мой профиль"
+msgstr ""
+
+#: .\rememberApp\templates\components\base.html:111
+msgid "Выйти"
+msgstr ""
+
+#: .\rememberApp\templates\components\base.html:115
+#: .\rememberApp\templates\registration\login.html:142
+#: .\rememberApp\templates\registration\register.html:170
+msgid "Войти"
 msgstr ""
 
 #: .\rememberApp\templates\contact.html:36
@@ -158,29 +228,12 @@ msgstr ""
 msgid "Адрес"
 msgstr ""
 
-#: .\rememberApp\templates\contact.html:69
-#: .\rememberApp\templates\contact.html:97
-#: .\rememberApp\templates\feedback.html:67
-#: .\rememberApp\templates\home.html:242
-msgid "Телефон"
-msgstr ""
-
 #: .\rememberApp\templates\contact.html:73
 msgid "Адрес электронной почты"
 msgstr ""
 
 #: .\rememberApp\templates\contact.html:83
 msgid "Связаться"
-msgstr ""
-
-#: .\rememberApp\templates\contact.html:91
-#: .\rememberApp\templates\feedback.html:52
-#: .\rememberApp\templates\home.html:225
-msgid "Имя"
-msgstr ""
-
-#: .\rememberApp\templates\contact.html:103
-msgid "Ваша электронная почта"
 msgstr ""
 
 #: .\rememberApp\templates\contact.html:110
@@ -237,7 +290,7 @@ msgid "Расчёт стоимости"
 msgstr ""
 
 #: .\rememberApp\templates\home.html:61 .\rememberApp\templates\home.html:171
-#: .\rememberApp\templates\services.html:41
+#: .\rememberApp\templates\services.html:42
 msgid "Подробнее"
 msgstr ""
 
@@ -289,10 +342,57 @@ msgstr ""
 msgid "Расчет стоимости"
 msgstr ""
 
-#: .\rememberApp\views.py:33 .\rememberApp\views.py:152
+#: .\rememberApp\templates\registration\login.html:150
+#: .\rememberApp\templates\registration\login.html:151
+msgid "Пароль"
+msgstr ""
+
+#: .\rememberApp\templates\registration\login.html:153
+msgid "У вас нет аккаунта?"
+msgstr ""
+
+#: .\rememberApp\templates\registration\login.html:153
+#: .\rememberApp\templates\registration\register.html:142
+#: .\rememberApp\templates\registration\register.html:171
+msgid "Регистрация"
+msgstr ""
+
+#: .\rememberApp\templates\registration\login.html:154
+msgid "Login"
+msgstr ""
+
+#: .\rememberApp\templates\registration\register.html:170
+msgid "У вас уже есть аккаунт"
+msgstr ""
+
+#: .\rememberApp\templates\service_details.html:72
+msgid "Оплата"
+msgstr ""
+
+#: .\rememberApp\templates\service_details.html:76
+msgid "Выберите способ оплаты"
+msgstr ""
+
+#: .\rememberApp\templates\service_details.html:162
+msgid "Купить"
+msgstr ""
+
+#: .\rememberApp\views.py:28
+msgid "Неправильный логин или пароль!"
+msgstr ""
+
+#: .\rememberApp\views.py:47
+msgid "Вы успешно зарегистрировались!"
+msgstr ""
+
+#: .\rememberApp\views.py:51
+msgid "Неправильный логин или пароль"
+msgstr ""
+
+#: .\rememberApp\views.py:81 .\rememberApp\views.py:200
 msgid "Ooops something went wrong!"
 msgstr "Упс, что-то пошло не так!"
 
-#: .\rememberApp\views.py:128
+#: .\rememberApp\views.py:176
 msgid "Ooops, something went wrong!"
 msgstr "Упс, что-то пошло не так!"

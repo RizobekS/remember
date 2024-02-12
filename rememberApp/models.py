@@ -1,15 +1,57 @@
 from django.core.mail import send_mail
-from django.core.validators import FileExtensionValidator
+from django.core.validators import FileExtensionValidator, MinValueValidator, MaxValueValidator
 from django.db.models import FileField
 from django.urls import reverse
 from django.utils import timezone
 from django_resized import ResizedImageField
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.utils.translation import gettext_lazy as _
-
+from django.contrib.auth.models import BaseUserManager, AbstractUser
+from django.contrib.auth.hashers import make_password
 from django.db import models
 
 from remember_project.settings import EMAIL_HOST_USER
+
+
+class CustomUserManager(BaseUserManager):
+    def create_user(self, phone, password, **extra_fields):
+        if not phone:
+            raise ValueError(_("Нужно ввести телефон номер!"))
+        user = self.model(phone=phone, **extra_fields)
+        user.set_password(password)
+        user.save()
+        return user
+
+    def create_superuser(self, phone, password, **extra_fields):
+        extra_fields.setdefault('is_superuser', True)
+        extra_fields.setdefault('is_staff', True)
+
+        return self.create_user(phone, password, **extra_fields)
+
+
+class User(AbstractUser):
+    username = None
+    email = models.CharField(blank=False, null=False, max_length=600)
+    phone = models.CharField(max_length=20, unique=True)
+
+    USERNAME_FIELD = 'phone'
+    REQUIRED_FIELDS = []
+
+    objects = CustomUserManager()
+
+    def __str__(self):
+        return self.phone
+
+    class Meta(AbstractUser.Meta):
+        swappable = 'AUTH_USER_MODEL'
+        verbose_name = 'User'
+        verbose_name_plural = 'Users'
+
+    def save(self, *args, **kwargs):
+        if 80 > len(self.password):
+            self.password = make_password(self.password)
+
+        super().save(*args, **kwargs)
 
 
 class AboutPage(models.Model):
@@ -82,6 +124,20 @@ class Services(models.Model):
 
     def get_absolute_url(self):
         return reverse('tender_detail', args=[str(self.pk)])
+
+
+class Prices(models.Model):
+    class Meta:
+        verbose_name = _('Price')
+        verbose_name_plural = _('Prices')
+
+    services = models.ForeignKey(Services, null=True, on_delete=models.SET_NULL)
+    value = models.DecimalField(max_digits=20, decimal_places=3, null=True, blank=True,
+                                validators=[MinValueValidator(1), MaxValueValidator(999999999)])
+    date = models.DateTimeField(auto_now=True, null=True)
+
+    def __str__(self):
+        return self.services.title_uz
 
 
 class Graveyard(models.Model):
@@ -221,3 +277,34 @@ class Gallery(models.Model):
     image = ResizedImageField(upload_to='gallery/images/',
                               validators=[FileExtensionValidator(allowed_extensions=['jpeg', 'png', 'jpg'])], null=True,
                               blank=True, quality=65)
+
+
+class MyServices(models.Model):
+    PAYMENT_STATUS = (
+        ("new", "Yangi"),
+        ("paid", "To'landi"),
+        ("canceled", "Bekor qilindi")
+    )
+
+    PAYMENT_TYPE = (
+        ('payme', 'Payme'),
+        ('click', 'Click')
+    )
+
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    services = models.ForeignKey(Services, null=True, on_delete=models.SET_NULL)
+    value = models.DecimalField(max_digits=20, decimal_places=3, null=True, blank=True,
+                                validators=[MinValueValidator(1), MaxValueValidator(999999999)])
+
+    total_price = models.CharField(max_length=300)
+    payment_status = models.CharField(max_length=300, choices=PAYMENT_STATUS)
+    payment_type = models.CharField(max_length=300, choices=PAYMENT_TYPE)
+    payment_time = models.TimeField(auto_now_add=True)
+    payment_date = models.DateField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = 'My Service'
+        verbose_name_plural = 'My Services'
+
+    def __str__(self):
+        return self.services.title_uz

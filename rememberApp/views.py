@@ -1,12 +1,60 @@
+from decimal import Decimal
+
+from clickuz import ClickUz
 from django.contrib import messages
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth.decorators import login_required
 
 from django.utils.translation import gettext_lazy as _
+from paycomuz import Paycom
 
 from rememberApp.forms import ContactForm, CalculateForm, FeedbackForm
-from rememberApp.models import AboutPage, Services, CalculateCost, Feedback, Graveyard, Gallery
+from rememberApp.models import User, AboutPage, Services, CalculateCost, Feedback, Graveyard, Gallery
+from transaction.service import initalize_transaction_click, initalize_transaction_payme
+
+
+def login_view(request):
+    if request.method == 'POST':
+        phone = request.POST.get('phone')
+        password = request.POST.get('password')
+        user = authenticate(username=phone, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('home')
+        else:
+            messages.error(request, _("Неправильный логин или пароль!"))
+    return render(request, 'registration/login.html')
+
+
+def register_view(request):
+    if request.method == "POST":
+        try:
+            user = User()
+            user.type = 3
+            user.first_name = request.POST.get('first_name')
+            user.last_name = request.POST.get('last_name')
+            user.phone = request.POST.get('phone')
+            user.email = request.POST.get('email')
+            password1 = request.POST.get('password1')
+            password2 = request.POST.get('password2')
+            if password1 == password2:
+                user.password = password1
+                user.save()
+            messages.success(request,
+                             _("Вы успешно зарегистрировались!"))
+            return redirect("login")
+        except Exception as e:
+            print(e)
+            messages.error(request, _("Неправильный логин или пароль"))
+    return render(request, "registration/register.html")
+
+
+def logout_view(request):
+    logout(request)
+    return redirect('home')
 
 
 def home(request):
@@ -164,3 +212,44 @@ def gallery(request):
         'type_3': Gallery.objects.filter(type=2).order_by('-date'),
     }
     return render(request, 'gallery.html', context)
+
+
+@login_required(login_url='/login/')
+def click_generate_url(request, amount, tour_id):
+    price = amount * 1
+
+    transaction_id = initalize_transaction_click(
+        request.user,
+        price,
+        tour_id
+    )
+
+    generated_link = ClickUz.generate_url(
+        order_id=transaction_id,
+        amount=price,
+        return_url='http://www.remember.uz/'
+    )
+    return redirect(generated_link)
+
+
+@login_required(login_url='/login/')
+def payme_generate_url(request):
+    amount = request.GET.get('amount')
+    tour_id = request.GET.get('tour_id')
+    res = float(amount) * float(100)
+    price = Decimal(str(res))
+    print(price)
+
+    transaction_id = initalize_transaction_payme(
+        request.user,
+        amount,
+        tour_id
+    )
+
+    generated_link = Paycom().create_initialization(
+        price,
+        transaction_id,
+        return_url="http://www.remember.uz/"
+    )
+    return redirect(generated_link)
+

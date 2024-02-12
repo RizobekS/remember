@@ -1,5 +1,6 @@
 {% extends 'services.html' %}
 {% load static i18n%}
+{% load humanize %}
 {% get_current_language as LANGUAGE_CODE %}
 
 <!--Website page title-->
@@ -63,6 +64,28 @@
 {% endblock telegram_image %}
 
 {% block detail %}
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">{% translate 'Оплата' %}</h5>
+                <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" style="text-align: center;">
+                <h5 style="text-align: center; color: black;">{% translate 'Выберите способ оплаты' %}</h5>
+                <br>
+                <a target="_blank" href="/click_generate_url/{{ detail.value|floatformat:0 }}/{{ detail.id }}"><img
+                        class="border img-fluid rounded-5" width="40%"
+                        src="{% static 'rememberApp/systems/click.png' %}" alt="click"></a>
+                <a target="_blank"
+                   href="/payme_generate_url/?amount={{ detail.value|floatformat:0 }}&tour_id={{ detail.id }}"><img
+                        class="border img-fluid rounded-5" width="42%"
+                        src="{% static 'rememberApp/systems/payme.png' %}" alt="payme"></a>
+            </div>
+        </div>
+    </div>
+</div>
 <section class="dento--blog-area">
     <div class="container">
 
@@ -130,6 +153,13 @@
                             <div class="post-meta">
                                 <a href="javascript:;"><i class="fas fa-eye"></i> {{ detail.views }}</a>
                             </div>
+                        </div>
+                    </div>
+                    <h2>{{ detail.value|floatformat:0|intcomma }} UZS</h2>
+                    <div class="d-flex justify-content-center mt-3 mb-5">
+                        <div class="order col-6 col-md-4 col-lg-2">
+                            <a data-mdb-toggle="modal" data-mdb-target="#exampleModal" class="bg-info btn" id="order">
+                                {%translate 'Купить' %}</a>
                         </div>
                     </div>
                 </div>

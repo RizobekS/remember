@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Title -->
-    <title>{% spaceless %}{% block title %} {% translate "Помни меня" %} {% endblock title %}{% endspaceless %}</title>
+    <title>{% spaceless %} Remember Me {% endspaceless %}</title>
     <meta property="og:title"
           content='{% spaceless %}{% block og_title %}{% trans "Помни меня" %}{% endblock og_title %}{% endspaceless %}'/>
     <meta property="og:description"
@@ -101,6 +101,19 @@
                         </form>
                     </div>
                 </div>
+                {% if request.user.is_authenticated %}
+                <div class="dropdown">
+                      <a href="javascript:;" class="dropdown-toggle text-white" type="button" id="dropdownMenu2" data-mdb-toggle="dropdown" aria-expanded="false">
+                        <i style="color: white;" class="fa fa-user"></i>{{ user.first_name }}
+                      </a>
+                      <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                        <li><a href="{% url 'home' %}" class="dropdown-item text-capitalize" type="button">{% translate 'Мой профиль' %}</a></li>
+                        <li><a href="/logout-user/" class="dropdown-item text-capitalize" type="button">{% translate 'Выйти' %}</a></li>
+                      </ul>
+                </div>
+                {% else %}
+                <a style="color: white;" href="{% url 'login' %}"><i style="color: white;" class="fa fa-user"></i> {% translate 'Войти' %}</a>
+                    {% endif %}
                 <!-- Collapsible wrapper -->
             </div>
             <!-- Container wrapper -->

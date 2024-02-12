@@ -9,3 +9,7 @@ psycopg2==2.9.9
 sqlparse==0.4.4
 typing-extensions==4.9.0
 tzdata==2023.4
+
+djangorestframework~=3.14.0
+PaycomUz~=3.0
+ClickUz~=0.3
