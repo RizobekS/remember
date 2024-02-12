@@ -5,6 +5,7 @@ urlpatterns = [
     path('login/', views.login_view, name='login'),
     path('register/', views.register_view, name='registration'),
     path('logout-user/', views.logout_view, name='logout-user'),
+    path('dashboard/', views.dashboard, name='dashboard'),
     path("", views.home, name="home"),
     path("about_us/", views.about, name="about"),
     path("cemeteries/", views.cemeteries, name="cemeteries"),
@@ -16,5 +17,7 @@ urlpatterns = [
     path('gallery/', views.gallery, name='gallery'),
     path('click_generate_url/<int:amount>/<int:tour_id>/', views.click_generate_url, name='click_generate_url'),
     path('payme_generate_url/', views.payme_generate_url, name='payme_generate_url'),
+    path('invoice/<int:id>/', views.invoice, name='invoice'),
+    path('myservice-detail/<int:id>/', views.myservicedetail, name='myservice-detail'),
 
 ]

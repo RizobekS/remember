@@ -1,0 +1,153 @@
+{% extends 'components/base.html' %}
+{% load static %}
+{% load i18n %}
+{% load humanize %}
+{% get_current_language as LANGUAGE_CODE %}
+
+
+{% block content %}
+    <style>
+        .lang_form {
+            margin-top: 3%;
+        }
+
+        .lang_form > select {
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #1563bf;
+            color: white;
+            border: none;
+        }
+
+        .lang_form > select > option {
+            padding: 5px;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+
+
+<div class="main-wrapper">
+
+    <div class="page-content">
+        <div class="container">
+            <div class="row justify-content-center">
+
+                <div class="col-xl-9 col-md-8">
+                    <div class="settings-widget profile-details">
+                        <div class="settings-menu invoice-list-blk p-0 ">
+                            <div class="card pro-post border-0 mb-0">
+                                <div class="card-body">
+                                    <div class="invoice-item">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="invoice-logo">
+                                                    <img src="{% static 'home/img-core/logo/logo-3.png' %}" alt="Culttravels" height="60">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p class="invoice-details">
+                                                    <strong>{% translate 'Invoice' %}:</strong> #{{ myservice.id }} <br>
+                                                    <strong>{% translate 'Date' %}:</strong> {{ myservice.payment_date }}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="invoice-item">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="invoice-info">
+                                                    <strong class="customer-text">{% translate 'From' %}</strong>
+                                                    <p class="invoice-details invoice-details-two">
+                                                        {{ myservice.user.first_name }} {{ myservice.user.last_name }} <br>
+                                                        {{ myservice.user.phone }}<br>
+                                                        {{ myservice.user.email }} <br>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="invoice-info invoice-info2">
+                                                    <strong class="customer-text">{% translate 'To' %}</strong>
+                                                    <p class="invoice-details">
+                                                        Remember Me <br>
+                                                        +99890 93 550-26-62<br>
+                                                        rememberme.uz@mail.ru<br>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="invoice-item">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="invoice-info">
+                                                    <strong class="customer-text">{% translate 'Payment type' %}</strong>
+                                                    {% if myservice.payment_type == 'click' %}
+                                                        <img width="150"
+                                                             src="{% static 'rememberApp/systems/click_short.png' %}"
+                                                             alt="clickuz">
+                                                    {% elif myservice.payment_type == 'payme' %}
+                                                        <img width="150"
+                                                             src="{% static 'rememberApp/systems/payme_short.png' %}"
+                                                             alt="paymeuz">
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="invoice-item invoice-table-wrap">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="table-responsive">
+                                                    <table class="invoice-table table table-bordered">
+                                                        <thead>
+                                                        <tr>
+                                                            <th>#</th>
+                                                            <th>{% translate 'Title' %}</th>
+                                                            <th class="text-center">{% translate 'Price' %}</th>
+                                                            <th class="text-end">{% translate 'Status' %}</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <tr>
+                                                            <td>{{ myservice.id }}</td>
+                                                            {% if LANGUAGE_CODE == 'en' %}
+                                                                <td>{{ myservice.title_en }}</td>
+                                                            {% elif LANGUAGE_CODE == 'ru' %}
+                                                                <td>{{ myservice.title_ru }}</td>
+                                                            {% elif LANGUAGE_CODE == 'uz' %}
+                                                                <td>{{ myservice.title_uz }}</td>
+                                                            {% endif %}
+                                                            <td class="text-center">{{ myservice.value|floatformat:0|intcomma }}
+                                                                UZS
+                                                            </td>
+                                                            <td class="text-end">
+                                                                {% if myservice.payment_status == 'paid' %}
+                                                                    {% translate 'Paid' %} ✅{% else %}
+                                                                    {{ myservice.get_payment_status_display }}{% endif %}</td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock content %}

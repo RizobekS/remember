@@ -280,9 +280,43 @@ class MyServices(models.Model):
     )
 
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
-    services = models.ForeignKey(Services, null=True, on_delete=models.SET_NULL)
+
+    title_en = models.CharField(max_length=255, null=True, blank=True)
+    title_ru = models.CharField(max_length=255, null=True, blank=True)
+    title_uz = models.CharField(max_length=255, null=True)
+
+    description_en = RichTextUploadingField(null=True, blank=True)
+    description_ru = RichTextUploadingField(null=True, blank=True)
+    description_uz = RichTextUploadingField(null=True)
     value = models.DecimalField(max_digits=20, decimal_places=3, null=True, blank=True,
                                 validators=[MinValueValidator(1), MaxValueValidator(999999999)])
+
+    date = models.DateField(auto_now=True, null=True)
+
+    views = models.IntegerField(default=0, null=True, blank=True)
+
+    icon = models.FileField(upload_to='services/services_icon/', blank=True, null=True, unique=True)
+
+    image = ResizedImageField(upload_to='services/images/',
+                              validators=[FileExtensionValidator(allowed_extensions=['jpeg', 'png', 'jpg', 'webp'])],
+                              null=True, blank=True, quality=65, force_format='JPEG')
+
+    image_2 = ResizedImageField(upload_to='services/images/',
+                                validators=[FileExtensionValidator(allowed_extensions=['jpeg', 'png', 'jpg', 'webp'])],
+                                null=True, blank=True, quality=65, force_format='JPEG')
+
+    image_3 = ResizedImageField(upload_to='services/images/',
+                                validators=[FileExtensionValidator(allowed_extensions=['jpeg', 'png', 'jpg', 'webp'])],
+                                null=True, blank=True, quality=65, force_format='JPEG')
+    image_4 = ResizedImageField(upload_to='services/images/',
+                                validators=[FileExtensionValidator(allowed_extensions=['jpeg', 'png', 'jpg', 'webp'])],
+                                null=True, blank=True, quality=65, force_format='JPEG')
+
+    english = models.BooleanField(blank=True, default=1)
+
+    russian = models.BooleanField(blank=True, default=1)
+
+    uzbek = models.BooleanField(blank=True, default=1)
 
     total_price = models.CharField(max_length=300)
     payment_status = models.CharField(max_length=300, choices=PAYMENT_STATUS)
@@ -291,8 +325,8 @@ class MyServices(models.Model):
     payment_date = models.DateField(auto_now_add=True)
 
     class Meta:
-        verbose_name = 'My Service'
-        verbose_name_plural = 'My Services'
+        verbose_name = _('My Service')
+        verbose_name_plural = _('My Services')
 
     def __str__(self):
         return self.services.title_uz

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import User, AboutPage, Services, Contact, CalculateCost, Feedback, Graveyard, Gallery
+from .models import User, AboutPage, Services, Contact, CalculateCost, Feedback, Graveyard, Gallery, MyServices
 
 
 class AboutPageAdmin(admin.ModelAdmin):
@@ -47,6 +47,7 @@ class GalleryAdmin(admin.ModelAdmin):
 
 admin.site.site_header = "Remember Me"
 admin.site.register(User)
+admin.site.register(MyServices)
 admin.site.register(AboutPage, AboutPageAdmin)
 admin.site.register(Services, ServicesAdmin)
 admin.site.register(Graveyard, GraveyardAdmin)

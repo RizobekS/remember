@@ -12,7 +12,7 @@ from django.utils.translation import gettext_lazy as _
 from paycomuz import Paycom
 
 from rememberApp.forms import ContactForm, CalculateForm, FeedbackForm
-from rememberApp.models import User, AboutPage, Services, CalculateCost, Feedback, Graveyard, Gallery
+from rememberApp.models import User, AboutPage, Services, CalculateCost, Feedback, Graveyard, Gallery, MyServices
 from transaction.service import initalize_transaction_click, initalize_transaction_payme
 
 
@@ -214,6 +214,36 @@ def gallery(request):
     return render(request, 'gallery.html', context)
 
 
+def dashboard(request):
+    myservice = MyServices.objects.filter(user__id=request.user.id).order_by('-id')
+    if request.method == 'POST':
+        return redirect('services')
+
+    context = {
+        'myservice': myservice
+    }
+
+    return render(request, 'dashboard.html', context)
+
+
+def invoice(request, id):
+    myservice = MyServices.objects.get(id=id)
+
+    context = {
+        'myservice': myservice
+    }
+    return render(request, 'invoice_detail.html', context)
+
+
+def myservicedetail(request, id):
+    myservice = MyServices.objects.get(id=id)
+    context = {
+        'myservice': myservice
+    }
+
+    return render(request, 'myservice_detail.html', context)
+
+
 @login_required(login_url='/login/')
 def click_generate_url(request, amount, service_id):
     price = amount * 1
@@ -227,7 +257,7 @@ def click_generate_url(request, amount, service_id):
     generated_link = ClickUz.generate_url(
         order_id=transaction_id,
         amount=price,
-        return_url='http://www.remember.uz/'
+        return_url='http://www.remember.uz/dashboard/'
     )
     return redirect(generated_link)
 
@@ -249,7 +279,35 @@ def payme_generate_url(request):
     generated_link = Paycom().create_initialization(
         price,
         transaction_id,
-        return_url="http://www.remember.uz/"
+        return_url="http://www.remember.uz/dashboard/"
     )
     return redirect(generated_link)
+
+
+def payment_success(request, payment_type, service_id, user):
+    service = Services.objects.get(id=service_id)
+
+    myservice = MyServices()
+    myservice.user = user
+
+    myservice.title_en = service.title_en
+    myservice.title_ru = service.title_ru
+    myservice.title_uz = service.title_uz
+
+    myservice.description_en = service.description_en
+    myservice.description_ru = service.description_ru
+    myservice.description_uz = service.description_uz
+
+    myservice.value = service.value  # price
+    myservice.image = service.image
+    myservice.image_2 = service.image_2
+    myservice.image_3 = service.image_3
+    myservice.image_4 = service.image_4
+
+    myservice.payment_status = 'paid'
+    myservice.payment_type = payment_type
+    myservice.total_price = service.value
+    myservice.save()
+
+    return redirect('dashboard')
 

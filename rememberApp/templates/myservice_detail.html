@@ -1,0 +1,132 @@
+{% extend 'components/base.html' %}
+{% load static %}
+{% load i18n %}
+{% load humanize %}
+{% get_current_language as LANGUAGE_CODE %}
+
+{% block content %}
+    <style>
+        .lang_form {
+            margin-top: 3%;
+        }
+
+        .lang_form > select {
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #1563bf;
+            color: white;
+            border: none;
+        }
+
+        .lang_form > select > option {
+            padding: 5px;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+
+
+<div class="main-wrapper">
+
+
+
+
+    <div class="page-content mb-5">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-xl-3 col-lg-4 col-md-12 theiaStickySidebar">
+                    <div class="card testimonial-card mt-2 mb-3">
+                        <div class="card-up aqua-gradient"></div>
+                        <div class="avatar mx-auto white">
+                            <img src="{% static 'dashboard/assets/img/user-img.png' %}"
+                                 class="rounded-circle img-fluid"
+                                 alt="user">
+                        </div>
+                        <div class="card-body text-center">
+                            <h4><a>{{ request.user.first_name }} {{ request.user.last_name }}</a></h4>
+                            <p>{{ request.user.phone }}</p>
+                            <hr>
+                            <h5>{% translate 'CONTROL PANEL' %}</h5>
+                            <ul class="list-group list-group-light">
+                                <li class="list-group-item px-3 border-0" aria-current="true">
+                                    <a href="{% url 'dashboard' %}"
+                                       class="nav-link" style="color: #65CCB8;">
+                                        <i class="fas fa-shopping-cart"></i> {% translate 'Payments' %}</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-xl-9 col-lg-8 col-md-12">
+                    <div class="card overview-sec">
+                        <div class="blog-image">
+                            {% if LANGUAGE_CODE == 'en' %}
+                                <img class="img-fluid" src="{{ myservice.image.url }}" alt="Post Image">
+                            {% elif LANGUAGE_CODE == 'ru' %}
+                                <img class="img-fluid" src="{{ myservice.image_ru.url }}" alt="Post Image">
+                            {% elif LANGUAGE_CODE == 'uz' %}
+                                 <img class="img-fluid" src="{{ myservice.image_uz.url }}" alt="Post Image">
+                            {% endif %}
+                        </div>
+                        <div class="card-body">
+                            {% if LANGUAGE_CODE == 'en' %}
+                                <h3 class="blog-title">{{ myservice.title_en }}</h3>
+                                <p>{{ myservice.description_en|safe }}</p>
+
+                                <br>
+                                <h6>Report</h6>
+                                <ul class="mb-0">
+                                    <li>Price: {{ myservice.value|floatformat:0|intcomma }} UZS</li>
+                                    <li>Payment Status: {% if myservice.payment_status == 'paid' %}Paid ✅{% else %}{{ myservice.get_payment_status_display }}{% endif %}</li>
+                                    <li>Payment time: {{ myservice.payment_time }}</li>
+                                    <li class="mb-0">Payment date: {{ myservice.payment_date }}</li>
+                                    <li class="mb-0">Payment type: {{ myservice.get_payment_type_display }}</li>
+                                </ul>
+                             {% elif LANGUAGE_CODE == 'ru' %}
+                                <h3 class="blog-title">{{ myservice.title_ru }}</h3>
+                                <p>{{ myservice.description_ru|safe }}</p>
+
+                                <br>
+                                <h6>Отчет</h6>
+                                <ul class="mb-0">
+                                    <li>Цена: {{ myservice.value|floatformat:0|intcomma }} UZS</li>
+                                    <li>Статус платежа: {% if myservice.payment_status == 'paid' %}Оплачено ✅{% else %}{{ myservice.get_payment_status_display }}{% endif %}</li>
+                                    <li>Время оплаты: {{ myservice.payment_time }}</li>
+                                    <li>Дата платежа: {{ myservice.payment_date }}</li>
+                                    <li class="mb-0">Способ оплаты: {{ myservice.get_payment_type_display }}</li>
+                                </ul>
+                             {% elif LANGUAGE_CODE == 'uz' %}
+                                 <h3 class="blog-title">{{ myservice.title_uz }}</h3>
+                                <p>{{ myservice.description_uz|safe }}</p>
+
+                                <br>
+                                <h6>Xisobot</h6>
+                                <ul class="mb-0">
+                                    <li>Narxi: {{ myservice.value|floatformat:0|intcomma }} UZS</li>
+                                    <li>To'lov holati: {% if myservice.payment_status == 'paid' %}To'langan ✅{% else %}{{ myservice.get_payment_status_display }}{% endif %}</li>
+                                    <li>To'lov vaqti: {{ myservice.payment_time }}</li>
+                                    <li>To'lov sanasi: {{ myservice.payment_date }}</li>
+                                    <li class="mb-0">To'lov turi: {{ myservice.get_payment_type_display }}</li>
+                                </ul>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<button
+        type="button"
+        class="btn btn-info btn-floating btn-lg mb-5"
+        id="btn-back-to-top">
+    <i class="p-0 fas fa-arrow-up"></i>
+</button>
+{% endblock content %}

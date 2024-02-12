@@ -53,7 +53,7 @@ class InitializePaymentAPIView(APIView):
             generated_link = ClickUz.generate_url(
                 order_id=transaction_id,
                 amount=price,
-                return_url='http://127.0.0.1:8000/'
+                return_url='http://127.0.0.1:8000/dashboard/'
             )
         elif transaction_type == models.TRANSACTIONTYPECHOICES.VISA:
             pass
