@@ -17,6 +17,7 @@ class TRANSACTIONSTATUS(models.TextChoices):
 
 class Transaction(models.Model):
     service = models.ForeignKey(Services, on_delete=models.SET_NULL, null=True)
+    price = models.ForeignKey(Price, on_delete=models.SET_NULL, null=True)
 
     total_price = models.DecimalField(max_digits=20, decimal_places=3)
     is_verified = models.BooleanField(default=False)

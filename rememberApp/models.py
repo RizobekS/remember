@@ -93,12 +93,13 @@ class Services(models.Model):
     description_uz = RichTextUploadingField(null=True)
     value = models.DecimalField(max_digits=20, decimal_places=3, null=True, blank=True,
                                 validators=[MinValueValidator(1), MaxValueValidator(999999999)])
+    amount = models.IntegerField(default=0)
 
     date = models.DateField(auto_now=True, null=True)
 
     views = models.IntegerField(default=0, null=True, blank=True)
 
-    icon = models.FileField(upload_to='services/services_icon/', blank=True, null=True, unique=True)
+    icon = models.FileField(upload_to='services/services_icon/', blank=True, null=True)
 
     image = ResizedImageField(upload_to='services/images/',
                               validators=[FileExtensionValidator(allowed_extensions=['jpeg', 'png', 'jpg', 'webp'])],
@@ -125,7 +126,20 @@ class Services(models.Model):
         return self.title_uz
 
     def get_absolute_url(self):
-        return reverse('tender_detail', args=[str(self.pk)])
+        return reverse('service_detail', args=[str(self.pk)])
+
+
+class Price(models.Model):
+    class Meta:
+        verbose_name = _('Price')
+        verbose_name_plural = _('Prices')
+
+    service = models.ForeignKey(Services, on_delete=models.SET_NULL, null=True)
+    amount = models.IntegerField(default=0)
+    date = models.DateField(auto_now=True, null=True)
+
+    def __str__(self):
+        return self.service.title_uz
 
 
 class Graveyard(models.Model):

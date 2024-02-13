@@ -78,10 +78,12 @@
                 <a target="_blank" href="/click_generate_url/{{ detail.value|floatformat:0 }}/{{ detail.id }}"><img
                         class="border img-fluid rounded-5" width="40%"
                         src="{% static 'rememberApp/systems/click.png' %}" alt="click"></a>
+                {% for pr in price %}
                 <a target="_blank"
-                   href="/payme_generate_url/?amount={{ detail.value|floatformat:0 }}&service_id={{ detail.id }}"><img
+                   href="/payme_generate_url/?amount={{ pr.amount|floatformat:0 }}&service_id={{ pr.id }}"><img
                         class="border img-fluid rounded-5" width="42%"
                         src="{% static 'rememberApp/systems/payme.png' %}" alt="payme"></a>
+                {% endfor %}
             </div>
         </div>
     </div>
@@ -155,12 +157,14 @@
                             </div>
                         </div>
                     </div>
-                    {% if detail.value %}
+                    {% if price %}
                     <div class="d-flex justify-content-center align-items-end mt-3 mb-5">
                         <div class=" col-6 col-md-4 col-lg-2">
-                            <h4 class="">{{ detail.value|floatformat:0|intcomma }} UZS</h4>
+                            {% for pr in price %}
+                            <h4 class="">{{ pr.amount|intcomma }} UZS</h4>
                             <a data-mdb-toggle="modal" data-mdb-target="#exampleModal" class="btn btn-success" id="order">
                                 {%translate 'Купить' %}</a>
+                            {% endfor %}
                         </div>
                     </div>
                     {% endif %}

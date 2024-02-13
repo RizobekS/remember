@@ -4,16 +4,17 @@ from clickuz import ClickUz
 from django.contrib import messages
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.http import HttpResponseRedirect
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
+from payme.methods.generate_link import GeneratePayLink
 
 from django.utils.translation import gettext_lazy as _
-from paycomuz import Paycom
 
 from rememberApp.forms import ContactForm, CalculateForm, FeedbackForm
-from rememberApp.models import User, AboutPage, Services, CalculateCost, Feedback, Graveyard, Gallery, MyServices
+from rememberApp.models import User, AboutPage, Services, CalculateCost, Feedback, Graveyard, Gallery, MyServices, Price
 from transaction.service import initalize_transaction_click, initalize_transaction_payme
+
 
 
 def login_view(request):
@@ -149,7 +150,8 @@ def services(request):
 
 
 def service_details(request, pk):
-    detail = Services.objects.get(pk=pk)
+    detail = get_object_or_404(Services, pk=pk)
+    price = Price.objects.filter(service=detail)
     if request.LANGUAGE_CODE == 'en' and not detail.english:
         return HttpResponseRedirect(f"/{request.LANGUAGE_CODE}/services/")
     elif request.LANGUAGE_CODE == 'uz' and not detail.uzbek:
@@ -161,7 +163,7 @@ def service_details(request, pk):
     detail.views += 1
     detail.save()
 
-    return render(request, "service_details.html", {'detail': detail})
+    return render(request, "service_details.html", {'detail': detail, 'price': price})
 
 
 def contact(request):
@@ -265,22 +267,16 @@ def click_generate_url(request, amount, service_id):
 @login_required(login_url='/login/')
 def payme_generate_url(request):
     amount = request.GET.get('amount')
-    service_id = request.GET.get('service_id')
+    price_id = request.GET.get('price_id')
     res = float(amount) * float(100)
-    price = Decimal(str(res))
+    price = str(Decimal(res))
     print(price)
 
-    transaction_id = initalize_transaction_payme(
-        request.user,
+    generated_link = GeneratePayLink(
+        price_id,
         amount,
-        service_id
-    )
 
-    generated_link = Paycom().create_initialization(
-        price,
-        transaction_id,
-        return_url="http://www.remember.uz/dashboard/"
-    )
+    ).generate_link()
     return redirect(generated_link)
 
 

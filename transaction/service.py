@@ -2,6 +2,8 @@ from transaction.models import Transaction
 from rememberApp.models import *
 from transaction import models
 
+from rememberApp.models import Price
+
 
 def initialize_transaction(owner, price, transaction_type):
     obj = Transaction.objects.create(
@@ -13,24 +15,24 @@ def initialize_transaction(owner, price, transaction_type):
     return obj.id
 
 
-def initalize_transaction_click(owner, price, service_id):
-    service = Services.objects.get(id=service_id)
+def initalize_transaction_click(owner, price, prices_id):
+    prices = Price.objects.get(id=prices_id)
     obj = Transaction.objects.create(
         owner=owner,
         total_price=price,
         transaction_type=models.TRANSACTIONTYPECHOICES.CLICK,
-        service=service
+        service=prices
     )
     return obj.id
 
 
-def initalize_transaction_payme(owner, price, service_id):
-    service = Services.objects.get(id=service_id)
+def initalize_transaction_payme(owner, price, prices_id):
+    prices = Price.objects.get(id=prices_id)
     obj = Transaction.objects.create(
         owner=owner,
         total_price=price,
         transaction_type=models.TRANSACTIONTYPECHOICES.PAYME,
-        service=service
+        service=prices
     )
     return obj.id
 
