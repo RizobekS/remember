@@ -1,4 +1,5 @@
 from decimal import Decimal
+from pprint import pprint
 
 from clickuz import ClickUz
 from django.contrib import messages
@@ -272,12 +273,12 @@ def payme_generate_url(request):
     price = Decimal(res)
     print(price)
 
-    generated_link = GeneratePayLink(
+    pay_link = GeneratePayLink(
         price_id,
-        price,
+        amount,
 
     ).generate_link()
-    return redirect(generated_link)
+    pprint(pay_link)
 
 
 def payment_success(request, payment_type, service_id, user):
