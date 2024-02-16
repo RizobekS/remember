@@ -278,7 +278,7 @@ def payme_generate_url(request):
         amount,
 
     ).generate_link()
-    pprint(pay_link)
+    return redirect(pay_link)
 
 
 def payment_success(request, payment_type, service_id, user):
