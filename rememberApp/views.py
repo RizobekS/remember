@@ -293,6 +293,7 @@ def payme_generate_url(request):
 
 def payment_success(request, payment_type, service_id, user):
     service = Services.objects.get(id=service_id)
+    price = Price.objects.get(id=service_id)
 
     myservice = MyServices()
     myservice.user = user
@@ -305,7 +306,7 @@ def payment_success(request, payment_type, service_id, user):
     myservice.description_ru = service.description_ru
     myservice.description_uz = service.description_uz
 
-    myservice.value = service.value  # price
+    myservice.value = price.amount  # price
     myservice.image = service.image
     myservice.image_2 = service.image_2
     myservice.image_3 = service.image_3
@@ -313,7 +314,7 @@ def payment_success(request, payment_type, service_id, user):
 
     myservice.payment_status = 'paid'
     myservice.payment_type = payment_type
-    myservice.total_price = service.value
+    myservice.total_price = price.amount
     myservice.save()
 
     return redirect('dashboard')

@@ -294,7 +294,7 @@ class MyServices(models.Model):
     )
 
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
-
+    services = models.ForeignKey(Price, on_delete=models.SET_NULL, null=True)
     title_en = models.CharField(max_length=255, null=True, blank=True)
     title_ru = models.CharField(max_length=255, null=True, blank=True)
     title_uz = models.CharField(max_length=255, null=True)
@@ -343,4 +343,4 @@ class MyServices(models.Model):
         verbose_name_plural = _('My Services')
 
     def __str__(self):
-        return self.services.title_uz
+        return self.services.service.title_uz

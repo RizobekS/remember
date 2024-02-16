@@ -18,6 +18,18 @@ class ServicesAdmin(admin.ModelAdmin):
     search_fields = ['title_en', 'title_uz', 'title_ru']
 
 
+class MyServicesAdmin(admin.ModelAdmin):
+    list_display = ['title_uz', 'title_en', 'title_ru', 'value',
+                    'english', 'russian', 'uzbek', 'date', 'views']
+
+    list_editable = ['value', 'english', 'russian', 'uzbek', 'views']
+
+    fields = ['title_uz', 'description_uz', 'title_en', 'description_en', 'title_ru', 'description_ru', 'value', 'amount',
+              'image', 'image_2', 'image_3', 'image_4', 'icon', 'views', 'english', 'russian', 'uzbek']
+
+    search_fields = ['title_en', 'title_uz', 'title_ru']
+
+
 class PriceAdmin(admin.ModelAdmin):
     list_display = ['service', 'amount', 'date']
 
@@ -55,7 +67,7 @@ class GalleryAdmin(admin.ModelAdmin):
 
 admin.site.site_header = "Remember Me"
 admin.site.register(User)
-admin.site.register(MyServices)
+admin.site.register(MyServices, MyServicesAdmin)
 admin.site.register(AboutPage, AboutPageAdmin)
 admin.site.register(Services, ServicesAdmin)
 admin.site.register(Price, PriceAdmin)
