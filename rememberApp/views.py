@@ -269,12 +269,12 @@ def payme_generate_url(request):
     amount = request.GET.get('amount')
     price_id = request.GET.get('price_id')
     res = float(amount) * float(100)
-    price = str(Decimal(res))
+    price = Decimal(res)
     print(price)
 
     generated_link = GeneratePayLink(
         price_id,
-        amount,
+        price,
 
     ).generate_link()
     return redirect(generated_link)
