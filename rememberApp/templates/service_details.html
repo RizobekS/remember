@@ -80,7 +80,7 @@
                         src="{% static 'rememberApp/systems/click.png' %}" alt="click"></a>
                 {% for pr in price %}
                 <a target="_blank"
-                   href="/payme_generate_url/?amount={{ pr.amount|floatformat:0 }}&service_id={{ pr.id }}"><img
+                   href="/payme_generate_url/?amount={{ pr.amount|floatformat:0 }}&order_id={{ pr.id }}"><img
                         class="border img-fluid rounded-5" width="42%"
                         src="{% static 'rememberApp/systems/payme.png' %}" alt="payme"></a>
                 {% endfor %}

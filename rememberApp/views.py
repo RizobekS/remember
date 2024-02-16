@@ -1,5 +1,6 @@
 from decimal import Decimal
 from pprint import pprint
+from unicodedata import decimal
 
 from clickuz import ClickUz
 from django.contrib import messages
@@ -265,17 +266,26 @@ def click_generate_url(request, amount, service_id):
     return redirect(generated_link)
 
 
-@login_required(login_url='/login/')
+
 def payme_generate_url(request):
     amount = request.GET.get('amount')
-    price_id = request.GET.get('price_id')
-    res = float(amount) * float(100)
+    price_id = request.GET.get(str('order_id'))
+    res = int(amount)
     price = Decimal(res)
+    call_back_url = 'https://www.remember.uz/dashboard/'
     print(price)
+    print(price_id)
+
+    transaction_id = initalize_transaction_payme(
+        request.user,
+        amount,
+        price_id
+    )
 
     pay_link = GeneratePayLink(
-        price_id,
-        amount,
+        transaction_id,
+        price,
+        call_back_url,
 
     ).generate_link()
     return redirect(pay_link)
