@@ -75,9 +75,11 @@
             <div class="modal-body" style="text-align: center;">
                 <h5 style="text-align: center; color: black;">{% translate 'Выберите способ оплаты' %}</h5>
                 <br>
-                <a target="_blank" href="/click_generate_url/{{ detail.value|floatformat:0 }}/{{ detail.id }}"><img
+                % for pr in price %}
+                <a target="_blank" href="/click_generate_url/{{ pr.amount|floatformat:0 }}/{{ pr.id }}"><img
                         class="border img-fluid rounded-5" width="40%"
                         src="{% static 'rememberApp/systems/click.png' %}" alt="click"></a>
+                {% endfor %}
                 {% for pr in price %}
                 <a target="_blank"
                    href="/payme_generate_url/?amount={{ pr.amount|floatformat:0 }}&order_id={{ pr.id }}"><img
