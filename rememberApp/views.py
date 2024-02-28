@@ -248,7 +248,6 @@ def myservicedetail(request, id):
     return render(request, 'myservice_detail.html', context)
 
 
-@login_required(login_url='/login/')
 def click_generate_url(request, amount, service_id):
     price = amount * 1
 
@@ -264,7 +263,6 @@ def click_generate_url(request, amount, service_id):
         return_url='http://www.remember.uz/dashboard/'
     )
     return redirect(generated_link)
-
 
 
 def payme_generate_url(request):

@@ -15,8 +15,9 @@ urlpatterns = [
     path('feedback/', views.feedback, name='feedback'),
     path('contact/', views.contact, name='contact'),
     path('gallery/', views.gallery, name='gallery'),
-    path('click_generate_url/<int:amount>/<int:tour_id>/', views.click_generate_url, name='click_generate_url'),
+    path('click_generate_url/<int:amount>/<int:service_id>/', views.click_generate_url, name='click_generate_url'),
     path('payme_generate_url/', views.payme_generate_url, name='payme_generate_url'),
+    path('success_payment', views.payment_success, name='success_payment'),
     path('invoice/<int:id>/', views.invoice, name='invoice'),
     path('myservice-detail/<int:id>/', views.myservicedetail, name='myservice-detail'),
 

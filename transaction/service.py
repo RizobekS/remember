@@ -21,7 +21,7 @@ def initalize_transaction_click(owner, price, prices_id):
         transaction_type=models.TRANSACTIONTYPECHOICES.CLICK,
         service=prices
     )
-    return obj.id
+    return prices_id
 
 
 def initalize_transaction_payme(owner, price, prices_id):
