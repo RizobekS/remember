@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from transaction.models import TRANSACTIONTYPECHOICES, Transaction
+from .models import TRANSACTIONTYPECHOICES, Transaction
 
 
 class InitializePaymentSerializer(serializers.Serializer):

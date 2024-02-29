@@ -262,7 +262,7 @@ def click_generate_url(request, amount, service_id):
     generated_link = ClickUz.generate_url(
         amount=price,
         order_id=transaction_id,
-        return_url='http://127.0.0.1:8000/dashboard/'
+        return_url='http://www.remember.uz/dashboard/'
     )
     return redirect(generated_link)
 
