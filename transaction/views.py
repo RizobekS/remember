@@ -1,4 +1,4 @@
-from django.conf import settings
+
 from rest_framework.views import APIView
 from rest_framework import permissions, status
 from rest_framework.response import Response
@@ -10,6 +10,8 @@ from transaction import helper
 from clickuz import ClickUz
 from clickuz.views import ClickUzMerchantAPIView
 from payme.views import MerchantAPIView
+
+from remember_project import settings
 
 converter_amount = settings.PAYME_PRICE_HELPER
 converter_amount_click = settings.CLICK_PRICE_HELPER
