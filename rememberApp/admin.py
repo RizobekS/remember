@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import User, AboutPage, Services, Contact, CalculateCost, Feedback, Graveyard, Gallery, MyServices, Price
+from .models import User, AboutPage, Services, Contact, CalculateCost, Feedback, Graveyard, Gallery, MyServices, Price, MyTransaction
 
 
 class AboutPageAdmin(admin.ModelAdmin):
@@ -12,7 +12,8 @@ class ServicesAdmin(admin.ModelAdmin):
 
     list_editable = ['value', 'english', 'russian', 'uzbek', 'views']
 
-    fields = ['title_uz', 'description_uz', 'title_en', 'description_en', 'title_ru', 'description_ru', 'value', 'amount',
+    fields = ['title_uz', 'description_uz', 'title_en', 'description_en', 'title_ru', 'description_ru', 'value',
+              'amount',
               'image', 'image_2', 'image_3', 'image_4', 'icon', 'views', 'english', 'russian', 'uzbek']
 
     search_fields = ['title_en', 'title_uz', 'title_ru']
@@ -24,7 +25,8 @@ class MyServicesAdmin(admin.ModelAdmin):
 
     list_editable = ['value', 'english', 'russian', 'uzbek', 'views']
 
-    fields = ['title_uz', 'description_uz', 'title_en', 'description_en', 'title_ru', 'description_ru', 'value', 'amount',
+    fields = ['title_uz', 'description_uz', 'title_en', 'description_en', 'title_ru', 'description_ru', 'value',
+              'amount',
               'image', 'image_2', 'image_3', 'image_4', 'icon', 'views', 'english', 'russian', 'uzbek']
 
     search_fields = ['title_en', 'title_uz', 'title_ru']
@@ -56,7 +58,8 @@ class FeedbackAdmin(admin.ModelAdmin):
 
 
 class ContactAdmin(admin.ModelAdmin):
-    list_display = ['name', 'phone', 'email', 'message', 'received_date', 'replied_date', 'reply_subject', 'reply_message']
+    list_display = ['name', 'phone', 'email', 'message', 'received_date', 'replied_date', 'reply_subject',
+                    'reply_message']
     search_fields = ['name', 'phone', 'email', 'message']
 
 
@@ -76,3 +79,4 @@ admin.site.register(CalculateCost, CalculateCostAdmin)
 admin.site.register(Feedback, FeedbackAdmin)
 admin.site.register(Contact, ContactAdmin)
 admin.site.register(Gallery, GalleryAdmin)
+admin.site.register(MyTransaction)

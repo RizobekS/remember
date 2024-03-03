@@ -76,7 +76,7 @@
                 <h5 style="text-align: center; color: black;">{% translate 'Выберите способ оплаты' %}</h5>
                 <br>
                 {% for pr in price %}
-                <a target="_blank" href="/click_generate_url/{{ pr.amount|floatformat:0 }}/{{ pr.id }}"><img
+                <a target="_blank" href="/click_generate_url/{{ pr.amount|floatformat:0 }}/{{ pr.id }}?service_id={{ detail.id }}"><img
                         class="border img-fluid rounded-5" width="40%"
                         src="{% static 'rememberApp/systems/click.png' %}" alt="click"></a>
                 {% endfor %}

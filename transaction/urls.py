@@ -9,4 +9,6 @@ urlpatterns = [
         view=views.accept_click_request_view,
         name="accept_click_requests",
     ),
+
+    path('click/transaction/', views.OrderTestView.as_view()),
 ]

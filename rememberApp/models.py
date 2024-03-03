@@ -344,3 +344,25 @@ class MyServices(models.Model):
 
     def __str__(self):
         return self.services.service.title_uz
+
+
+class MyTransaction(models.Model):
+    STATUS = (
+        ("waiting", "Waiting"),
+        ("paid", "Paid"),
+        ("canceled", "Cancel"),
+    )
+
+    PAYMENT_TYPE = (
+        ("click", "Click"),
+        ("payme", "Payme"),
+    )
+
+    status = models.CharField(max_length=600, choices=STATUS)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    service = models.ForeignKey(Services, on_delete=models.CASCADE)
+    payment_type = models.CharField(choices=PAYMENT_TYPE, max_length=600)
+    amount = models.CharField(max_length=600)
+
+    def __str__(self):
+        return self.user.phone

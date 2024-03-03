@@ -14,9 +14,9 @@ from payme.methods.generate_link import GeneratePayLink
 from django.utils.translation import gettext_lazy as _
 
 from rememberApp.forms import ContactForm, CalculateForm, FeedbackForm
-from rememberApp.models import User, AboutPage, Services, CalculateCost, Feedback, Graveyard, Gallery, MyServices, Price
+from rememberApp.models import *
 from transaction.service import initalize_transaction_click, initalize_transaction_payme
-
+from pyclick import PyClick
 
 
 def login_view(request):
@@ -256,15 +256,24 @@ def click_generate_url(request, amount, service_id):
         price,
         service_id
     )
-    print(price)
-    print(service_id)
+    call_back_url = 'https://www.remember.uz/dashboard/'
 
-    generated_link = ClickUz.generate_url(
-        amount=price,
-        order_id=transaction_id,
-        return_url='http://www.remember.uz/dashboard/'
-    )
-    return redirect(generated_link)
+    try:
+        service_id = request.GET.get("service_id")
+        service_instance = Services.objects.get(id=service_id)
+
+        data = MyTransaction()
+        data.user = request.user
+        data.status = "waiting"
+        data.service = service_instance
+        data.amount = amount
+        data.payment_type = "click"
+        data.save()
+    except Services.DoesNotExist:
+        return False
+
+    url = PyClick.generate_url(order_id=data.id, amount=str(amount), return_url=call_back_url)
+    return redirect(url)
 
 
 def payme_generate_url(request):
@@ -282,13 +291,8 @@ def payme_generate_url(request):
         price_id
     )
 
-    pay_link = GeneratePayLink(
-        transaction_id,
-        price,
-        call_back_url,
-
-    ).generate_link()
-    return redirect(pay_link)
+    url = PyClick.generate_url(order_id=transaction_id, amount=str(amount), return_url=call_back_url)
+    return redirect(url)
 
 
 def payment_success(request, payment_type, service_id, user):
@@ -318,4 +322,3 @@ def payment_success(request, payment_type, service_id, user):
     myservice.save()
 
     return redirect('dashboard')
-
