@@ -279,7 +279,7 @@ def click_generate_url(request, amount, service_id):
 def payme_generate_url(request):
     amount = request.GET.get('amount')
     price_id = request.GET.get(str('order_id'))
-    res = int(amount) * 100
+    res = int(amount)
     price = Decimal(res)
     call_back_url = 'https://www.remember.uz/dashboard/'
 
