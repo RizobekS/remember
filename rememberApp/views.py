@@ -279,11 +279,9 @@ def click_generate_url(request, amount, service_id):
 def payme_generate_url(request):
     amount = request.GET.get('amount')
     price_id = request.GET.get(str('order_id'))
-    res = int(amount)
+    res = int(amount) * 100
     price = Decimal(res)
     call_back_url = 'https://www.remember.uz/dashboard/'
-    print(price)
-    print(price_id)
 
     transaction_id = initalize_transaction_payme(
         request.user,
@@ -291,8 +289,13 @@ def payme_generate_url(request):
         price_id
     )
 
-    url = PyClick.generate_url(order_id=transaction_id, amount=str(amount), return_url=call_back_url)
-    return redirect(url)
+    pay_link = GeneratePayLink(
+        transaction_id,
+        price,
+        call_back_url,
+
+    ).generate_link()
+    return redirect(pay_link)
 
 
 def payment_success(request, payment_type, service_id, user):
